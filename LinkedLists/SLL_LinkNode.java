@@ -5,9 +5,12 @@ public class SLL_LinkNode {
 	private int data;
 	private SLL_LinkNode next;
 
-//Constructor
+//Constructors
 	public SLL_LinkNode(int item){
 		this.setData(item);
+		this.setNext(null);
+	}
+	public SLL_LinkNode(){
 		this.setNext(null);
 	}
 	
