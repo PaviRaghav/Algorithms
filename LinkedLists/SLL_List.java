@@ -84,9 +84,8 @@ public class SLL_List {
 		if (position >= this.length)
 			this.delete();
 		else {
-			SLL_LinkNode temp_node = new SLL_LinkNode();
+			SLL_LinkNode temp_node = this.headNode;
 			if (position <= 1) {
-				temp_node = this.headNode;
 				this.headNode = temp_node.getNext();
 				temp_node.setNext(null);
 			} else {
