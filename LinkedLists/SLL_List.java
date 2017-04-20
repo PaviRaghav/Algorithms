@@ -14,7 +14,16 @@ public class SLL_List {
 	public int getLength() {
 		return this.length;
 	}
-
+	
+	//get head
+	public SLL_LinkNode getHead() {
+		return this.headNode;
+	}
+	
+	//set head
+	public void setHead(SLL_LinkNode node) {
+		this.headNode=node;
+	}
 	// display list
 	public void display() {
 		SLL_LinkNode temp_node = this.headNode;
