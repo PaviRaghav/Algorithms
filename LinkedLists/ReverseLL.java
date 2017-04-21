@@ -32,4 +32,24 @@ public class ReverseLL {
 		Recursive_ReverseLL(next, curr);
 		return head;
 	}
+
+	public void reversePart(SLL_LinkNode head, int start, int end) {
+		if (end <= start)
+			return;
+		if (start <= 1)
+			start = 1;
+		// if(end>=length) end=length;
+		for (int i = 1; i < start-1; i++)
+			head = head.getNext();
+		SLL_LinkNode prev = head.getNext(), curr = head.getNext(), next = head;
+		for (int i=start; i<= end+1; i++) {
+			if (next != null)
+				curr = next;
+			next = curr.getNext();
+			curr.setNext(prev);
+			prev = curr;
+		}
+		head.getNext().setNext(next);
+		head.setNext(curr);
+	}
 }
