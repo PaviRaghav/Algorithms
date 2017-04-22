@@ -14,16 +14,17 @@ public class SLL_List {
 	public int getLength() {
 		return this.length;
 	}
-	
-	//get head
+
+	// get head
 	public SLL_LinkNode getHead() {
 		return this.headNode;
 	}
-	
-	//set head
+
+	// set head
 	public void setHead(SLL_LinkNode node) {
-		this.headNode=node;
+		this.headNode = node;
 	}
+
 	// display list
 	public void display() {
 		SLL_LinkNode temp_node = this.headNode;
@@ -72,6 +73,16 @@ public class SLL_List {
 		}
 	}
 
+	// getting the nth node
+	public SLL_LinkNode getNthNode(int position) {
+		SLL_LinkNode temp_node = this.headNode;
+		for (int i = 1; i < position; i++) {
+			if (temp_node.getNext() != null)
+				temp_node = temp_node.getNext();
+		}
+		return temp_node;
+	}
+
 	// deleting a node at the end
 	public void delete() {
 		// pre: length>0
@@ -104,7 +115,7 @@ public class SLL_List {
 				temp_node.setNext(del_node.getNext());
 				del_node.setNext(null);
 			}
-			this.length --;
+			this.length--;
 		}
 	}
 }
