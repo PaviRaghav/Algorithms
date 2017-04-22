@@ -28,7 +28,7 @@ public class SLL_List {
 	// display list
 	public void display() {
 		SLL_LinkNode temp_node = this.headNode;
-		for (int i = 0; i < this.length; i++) {
+		while (temp_node!=null) {
 			System.out.print(temp_node.getData() + " ");
 			temp_node = temp_node.getNext();
 		}
