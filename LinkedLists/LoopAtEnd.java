@@ -12,7 +12,7 @@ package Algorithms;
 import Implementation.*;
 
 public class LoopAtEnd {
-	private SLL_LinkNode meetingNode;
+	public SLL_LinkNode meetingNode;
 
 	public boolean checkForLoop(SLL_LinkNode slow) {
 		SLL_LinkNode fast = slow;
@@ -28,11 +28,23 @@ public class LoopAtEnd {
 	}
 
 	public void removeLoop(SLL_LinkNode ptr1) {
+		checkForLoop(ptr1);
 		SLL_LinkNode ptr2 = meetingNode;
 		while (ptr1.getNext() != ptr2.getNext()) {
 			ptr1 = ptr1.getNext();
 			ptr2 = ptr2.getNext();
 		}
 		ptr2.setNext(null);
+	}
+
+	public int lengthOfLoop(SLL_LinkNode head) {
+		checkForLoop(head);
+		int counter = 0;
+		SLL_LinkNode ptr = meetingNode;
+		do {
+			ptr = ptr.getNext().getNext();
+			counter++;
+		} while (ptr != meetingNode);
+		return counter;
 	}
 }
