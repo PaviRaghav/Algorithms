@@ -1,5 +1,6 @@
 /**
  * This is a class to find the meeting node of two linked lists.
+ * @author Pavithra Raghavan
  */
 package Algorithms;
 
