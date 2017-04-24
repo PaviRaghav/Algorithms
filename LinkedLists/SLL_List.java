@@ -28,7 +28,7 @@ public class SLL_List {
 	// display list
 	public void display() {
 		SLL_LinkNode temp_node = this.headNode;
-		while (temp_node!=null) {
+		while (temp_node != null) {
 			System.out.print(temp_node.getData() + " ");
 			temp_node = temp_node.getNext();
 		}
@@ -59,6 +59,30 @@ public class SLL_List {
 			this.add(item);
 		else {
 			SLL_LinkNode new_node = new SLL_LinkNode(item);
+			if (position <= 1) {
+				new_node.setNext(this.headNode);
+				this.headNode = new_node;
+			} else {
+				SLL_LinkNode temp_node = this.headNode;
+				for (int i = 1; i < position - 1; i++)
+					temp_node = temp_node.getNext();
+				new_node.setNext(temp_node.getNext());
+				temp_node.setNext(new_node);
+			}
+			this.length++;
+		}
+	}
+
+	// adding a node at a position
+	public void add(SLL_LinkNode new_node, int position) {
+		// pre: position to be in the range
+		// post: 'item' to be present in the 'position'th place
+		if (position >= this.length) {
+			SLL_LinkNode temp_node = this.headNode;
+			for (int i = 1; i < this.length; i++)
+				temp_node = temp_node.getNext();
+			temp_node.setNext(new_node);
+		} else {
 			if (position <= 1) {
 				new_node.setNext(this.headNode);
 				this.headNode = new_node;
