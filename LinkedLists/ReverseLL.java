@@ -61,7 +61,7 @@ public class ReverseLL {
 	}
 
 	public SLL_LinkNode ite_reverseInPairs(SLL_LinkNode head) {
-		// reversing the linked list in pairs
+		// reversing the linked list in pairs iteratively
 		SLL_LinkNode temp1, temp2, new_head = head.getNext();
 		while (head != null && head.getNext() != null) {
 			temp1 = head.getNext();
@@ -75,5 +75,17 @@ public class ReverseLL {
 
 		}
 		return new_head;
+	}
+
+	public SLL_LinkNode rec_reverseInPairs(SLL_LinkNode head) {
+		// reversing the linked list in pairs recursively
+		if (head == null || head.getNext() == null)
+			return head;
+		SLL_LinkNode temp = head.getNext();
+		head.setNext(temp.getNext());
+		temp.setNext(head);
+		head=temp;
+		head.getNext().setNext(rec_reverseInPairs(head.getNext().getNext()));
+		return head;
 	}
 }
