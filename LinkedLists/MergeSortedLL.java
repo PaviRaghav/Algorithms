@@ -19,11 +19,11 @@ public class MergeSortedLL {
 			return head1;
 		if(head1.getData() <= head2.getData()) {
 			curr = head1;
-			curr.next = rec_mergeSorted(head1.getNext(), head2);
+			curr.setNext(rec_mergeSorted(head1.getNext(), head2));
 		}
 		else  {
 			curr = head2;
-			curr.next = rec_mergeSorted(head2.getNext(), head1);
+			curr.setNext(rec_mergeSorted(head2.getNext(), head1));
 		} 
 		return curr;
 	}
