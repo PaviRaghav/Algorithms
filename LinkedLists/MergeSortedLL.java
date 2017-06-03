@@ -8,26 +8,29 @@ import Implementation.*;
 
 public class MergeSortedLL {
 
-	public SLL_LinkNode head= new SLL_LinkNode(0);
-/* debugging
+	
+
 	public SLL_LinkNode rec_mergeSorted(SLL_LinkNode head1, SLL_LinkNode head2) {
-		// using recursion
+		// recursive
+		SLL_LinkNode curr = new SLL_LinkNode(0);
 		if (head1 == null)
 			return head2;
 		if (head2 == null)
 			return head1;
-		if (head1.getData() > head2.getData()) {
-			head = head2;
-			head.next = rec_mergeSorted(head2.getNext(), head1);
-		} else {
-			head = head1;
-			head.next = rec_mergeSorted(head1.getNext(), head2);
+		if(head1.getData() <= head2.getData()) {
+			curr = head1;
+			curr.next = rec_mergeSorted(head1.getNext(), head2);
 		}
-		return head;
+		else  {
+			curr = head2;
+			curr.next = rec_mergeSorted(head2.getNext(), head1);
+		} 
+		return curr;
 	}
-	*/
 
 	public SLL_LinkNode it_mergeSorted(SLL_LinkNode head1, SLL_LinkNode head2) {
+		// iterative
+		SLL_LinkNode head = new SLL_LinkNode(0);
 		if (head1 == null)
 			return head2;
 		if (head2 == null)
@@ -43,8 +46,10 @@ public class MergeSortedLL {
 			}
 			curr = curr.getNext();
 		}
-		if(head1==null) curr.setNext(head2);
-		if(head2==null) curr.setNext(head1);
+		if (head1 == null)
+			curr.setNext(head2);
+		if (head2 == null)
+			curr.setNext(head1);
 		return head.getNext();
 	}
 }
