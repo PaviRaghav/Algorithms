@@ -2,6 +2,11 @@ package Algorithms;
 
 import Implementation.*;
 
+/**
+ * This is a class to reverse a Linker list (part or whole)
+ * 
+ * @author Pavithra Raghavan
+ */
 public class ReverseLL {
 	private SLL_LinkNode head;
 
@@ -22,6 +27,7 @@ public class ReverseLL {
 	}
 
 	public SLL_LinkNode Recursive_ReverseLL(SLL_LinkNode curr, SLL_LinkNode prev) {
+		// reversing LL recursively
 		if (curr.getNext() == null) {
 			head = curr;
 			curr.setNext(prev);
@@ -34,15 +40,16 @@ public class ReverseLL {
 	}
 
 	public void reversePart(SLL_LinkNode head, int start, int end) {
+		// reversing part of the linked list
 		if (end <= start)
 			return;
 		if (start <= 1)
 			start = 1;
 		// if(end>=length) end=length;
-		for (int i = 1; i < start-1; i++)
+		for (int i = 1; i < start - 1; i++)
 			head = head.getNext();
 		SLL_LinkNode prev = head.getNext(), curr = head.getNext(), next = head;
-		for (int i=start; i<= end+1; i++) {
+		for (int i = start; i <= end + 1; i++) {
 			if (next != null)
 				curr = next;
 			next = curr.getNext();
@@ -51,5 +58,22 @@ public class ReverseLL {
 		}
 		head.getNext().setNext(next);
 		head.setNext(curr);
+	}
+
+	public SLL_LinkNode ite_reverseInPairs(SLL_LinkNode head) {
+		// reversing the linked list in pairs
+		SLL_LinkNode temp1, temp2, new_head = head.getNext();
+		while (head != null && head.getNext() != null) {
+			temp1 = head.getNext();
+			temp2 = temp1.getNext();
+			if (temp2 == null || temp2.getNext() == null)
+				head.setNext(temp2);
+			else
+				head.setNext(temp2.getNext());
+			temp1.setNext(head);
+			head = temp2;
+
+		}
+		return new_head;
 	}
 }
