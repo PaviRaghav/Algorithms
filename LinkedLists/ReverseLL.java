@@ -106,10 +106,25 @@ public class ReverseLL {
 			head.setNext(rec_reverseBlocks(next, block));
 		return prev;
 	}
-
+/*
 	public SLL_LinkNode ite_reverseBlocks(SLL_LinkNode head, int block) {
 		// reverse in blocks iteratively
-		
+		SLL_LinkNode curr = head, head_prev = head, head_new = null;
+		SLL_LinkNode next = null;
+		SLL_LinkNode prev = null;
+		int count = block;
+		while (next != null) {
+			while (curr != null && count > 0) {
+				next = curr.getNext();
+				curr.setNext(prev);
+				prev = curr;
+				curr = next;
+				count--;
+			}
+			head_new = prev;
+			count = block;
+		}
 		return null;
 	}
+	*/
 }
