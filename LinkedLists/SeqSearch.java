@@ -8,9 +8,22 @@ public class SeqSearch {
 		}
 		return -1;
 	}
+	public int binary_search(int[] a, int x){
+		int low=0, high=a.length,mid;
+		while(low<high) {
+			mid=(low+high)/2;
+			if(a[mid]==x)
+				return mid;
+			else if (a[mid] < x)
+				low=mid+1;
+			else
+				high=mid;
+		}
+		return -1;
+	}
 	public static void main(String[] args) {
-		int[] a = { 3, 5, 1, 6, 2, 7, 4 };
+		int[] a = { 1,2,3,4,5,6,7};
 		SeqSearch obj = new SeqSearch(); 
-		System.out.println("i = " + obj.seq_search(a,3));
+		System.out.println("i = " + obj.binary_search(a,1));
 	}
 }
