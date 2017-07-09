@@ -32,10 +32,21 @@ public class SeqSearch {
 		}
 		return true;
 	}
+	
+	public int minElement(int[] a) {
+		if(a.length==0)
+			return 0;
+		int min=a[0];
+		for(int i=0;i<a.length-1;i++){
+			if(a[i]>a[i+1])
+				min=a[i+1];
+		}
+		return min;
+	}
 
 	public static void main(String[] args) {
-		int[] a = { 1, 2, 3, 4, 5, 7, 7 };
+		int[] a = { 1, 2, 3, 4, 10, 7, 0 };
 		SeqSearch obj = new SeqSearch();
-		System.out.println("i = " + obj.isSorted(a));
+		System.out.println("i = " + obj.minElement(a));
 	}
 }
