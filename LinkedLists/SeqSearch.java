@@ -1,7 +1,5 @@
 package Algorithms;
 
-import java.util.Arrays;
-
 public class SeqSearch {
 	public int seq_search(int[] a, int x) {
 		for (int i = 0; i < a.length; i++) {
@@ -77,17 +75,32 @@ public class SeqSearch {
 		if (a.length < 2)
 			return a;
 		int[] b = new int[a.length];
-		for(int i=a.length-1; i>=0 ; i--)
-			b[a.length-i-1]=a[i];
+		for (int i = a.length - 1; i >= 0; i--)
+			b[a.length - i - 1] = a[i];
 		return b;
+	}
+	
+	public int[] concatenate(int[] a, int[] b){
+		if(a.length<2)
+			return b;
+		if(b.length<2)
+			return a;
+		int[] c = new int[a.length + b.length];
+		for(int i=0; i<a.length;i++)
+			c[i]=a[i];
+		for(int i=0; i<b.length; i++)
+			c[i+a.length]=b[i];
+		return c;
 	}
 
 	public static void main(String[] args) {
 		int[] a = { 1, 2, 3, 4, 5, 6 };
 		SeqSearch obj = new SeqSearch();
-		int[] b = obj.reverse(a);
-		for (int i = 0; i < b.length; i++)
-			System.out.println(b[i]);
+
+		int[] b = { 1, 2, 3, 0 };
+		int[] c = obj.concatenate(a, b);
+		for (int i = 0; i < c.length; i++)
+			System.out.println(c[i]);
 		// System.out.println("i = " + obj.mean(a));
 	}
 }
