@@ -43,10 +43,18 @@ public class SeqSearch {
 		}
 		return min;
 	}
+	
+	public double mean(int[] a){
+		int sum=a[0];
+		for(int i=1; i<a.length;i++){
+			sum+=a[i];
+		}
+		return (double)sum/a.length;
+	}
 
 	public static void main(String[] args) {
-		int[] a = { 1, 2, 3, 4, 10, 7, 0 };
+		int[] a = { 1, 1, 1, 2, 3, 2, 4 };
 		SeqSearch obj = new SeqSearch();
-		System.out.println("i = " + obj.minElement(a));
+		System.out.println("i = " + obj.mean(a));
 	}
 }
