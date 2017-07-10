@@ -1,5 +1,7 @@
 package Algorithms;
 
+import java.util.Arrays;
+
 public class SeqSearch {
 	public int seq_search(int[] a, int x) {
 		for (int i = 0; i < a.length; i++) {
@@ -43,18 +45,41 @@ public class SeqSearch {
 		}
 		return min;
 	}
-	
-	public double mean(int[] a){
-		int sum=a[0];
-		for(int i=1; i<a.length;i++){
-			sum+=a[i];
+
+	public double mean(int[] a) {
+		int sum = a[0];
+		for (int i = 1; i < a.length; i++) {
+			sum += a[i];
 		}
-		return (double)sum/a.length;
+		return (double) sum / a.length;
+	}
+
+	public int[] withoutDup(int[] a) {
+		if(a.length<2)
+			return a;
+		int[] b = new int[a.length];
+		int count = 1;
+		b[0] = a[0];
+		for (int i = 1; i < a.length; i++) {
+			for (int j = 0; j < count; j++) {
+				if (a[i] == b[j])
+					break;
+				if (j == count - 1 && a[i] != b[j]) {
+					b[count] = a[i];
+					count++;
+				}
+			}
+			//System.out.println(b[i]);
+		}
+		return b;
 	}
 
 	public static void main(String[] args) {
-		int[] a = { 1, 1, 1, 2, 3, 2, 4 };
+		int[] a = { 1, 0, 1, 2, 3, 5, 1 };
 		SeqSearch obj = new SeqSearch();
-		System.out.println("i = " + obj.mean(a));
+		int[] b = obj.withoutDup(a);
+		for (int i = 0; i < b.length; i++)
+			System.out.println(b[i]);
+		// System.out.println("i = " + obj.mean(a));
 	}
 }
