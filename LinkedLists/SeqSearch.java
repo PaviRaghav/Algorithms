@@ -55,7 +55,7 @@ public class SeqSearch {
 	}
 
 	public int[] withoutDup(int[] a) {
-		if(a.length<2)
+		if (a.length < 2)
 			return a;
 		int[] b = new int[a.length];
 		int count = 1;
@@ -69,15 +69,23 @@ public class SeqSearch {
 					count++;
 				}
 			}
-			//System.out.println(b[i]);
 		}
 		return b;
 	}
 
+	public int[] reverse(int[] a) {
+		if (a.length < 2)
+			return a;
+		int[] b = new int[a.length];
+		for(int i=a.length-1; i>=0 ; i--)
+			b[a.length-i-1]=a[i];
+		return b;
+	}
+
 	public static void main(String[] args) {
-		int[] a = { 1, 0, 1, 2, 3, 5, 1 };
+		int[] a = { 1, 2, 3, 4, 5, 6 };
 		SeqSearch obj = new SeqSearch();
-		int[] b = obj.withoutDup(a);
+		int[] b = obj.reverse(a);
 		for (int i = 0; i < b.length; i++)
 			System.out.println(b[i]);
 		// System.out.println("i = " + obj.mean(a));
