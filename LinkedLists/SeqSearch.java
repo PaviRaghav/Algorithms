@@ -104,15 +104,24 @@ public class SeqSearch {
 		}
 		return tally;
 	}
-	
+
 	public double innerProd(double[] x, double[] y) {
 		double innerProduct = 0.0;
-		if(x.length != y.length)
+		if (x.length != y.length)
 			return 0.0;
-		for(int i=0;i<x.length;i++) {
-			innerProduct = innerProduct + (x[i]*y[i]);
+		for (int i = 0; i < x.length; i++) {
+			innerProduct = innerProduct + (x[i] * y[i]);
 		}
 		return innerProduct;
+	}
+
+	public double[][] outerProduct(double[] x, double[] y) {
+		double[][] a = new double[x.length][y.length];
+		for (int i = 0; i < x.length; i++) {
+			for (int j = 0; j < y.length; j++)
+				a[i][j] = x[i] * y[j];
+		}
+		return a;
 	}
 
 	public static void main(String[] args) {
@@ -120,10 +129,10 @@ public class SeqSearch {
 		double[] b = { 1, 2, 3, 4, 5, 6, 7 };
 		SeqSearch obj = new SeqSearch();
 
-		//String a = "aabcddefgghiijj1";
-		//int[] c = obj.tally(a);
-		//for (int i = 0; i < c.length; i++)
-			//System.out.println("c[" + i + "] = " + c[i]);
-		System.out.println("innerProduct = " + obj.innerProd(a,b));
+		// String a = "aabcddefgghiijj1";
+		// int[] c = obj.tally(a);
+		// for (int i = 0; i < c.length; i++)
+		// System.out.println("c[" + i + "] = " + c[i]);
+		System.out.println("innerProduct = " + obj.innerProd(a, b));
 	}
 }
