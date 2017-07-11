@@ -104,15 +104,26 @@ public class SeqSearch {
 		}
 		return tally;
 	}
+	
+	public double innerProd(double[] x, double[] y) {
+		double innerProduct = 0.0;
+		if(x.length != y.length)
+			return 0.0;
+		for(int i=0;i<x.length;i++) {
+			innerProduct = innerProduct + (x[i]*y[i]);
+		}
+		return innerProduct;
+	}
 
 	public static void main(String[] args) {
-		// int[] a = { 1, 2, 3, 4, 5, 6 };
+		double[] a = { 1, 2, 3, 4, 5, 6 };
+		double[] b = { 1, 2, 3, 4, 5, 6, 7 };
 		SeqSearch obj = new SeqSearch();
 
-		String a = "aabcddefgghiijj1";
-		int[] c = obj.tally(a);
-		for (int i = 0; i < c.length; i++)
-			System.out.println("c[" + i + "] = " + c[i]);
-		// System.out.println("i = " + obj.mean(a));
+		//String a = "aabcddefgghiijj1";
+		//int[] c = obj.tally(a);
+		//for (int i = 0; i < c.length; i++)
+			//System.out.println("c[" + i + "] = " + c[i]);
+		System.out.println("innerProduct = " + obj.innerProd(a,b));
 	}
 }
