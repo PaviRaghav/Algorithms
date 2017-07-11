@@ -79,28 +79,40 @@ public class SeqSearch {
 			b[a.length - i - 1] = a[i];
 		return b;
 	}
-	
-	public int[] concatenate(int[] a, int[] b){
-		if(a.length<2)
+
+	public int[] concatenate(int[] a, int[] b) {
+		if (a.length < 2)
 			return b;
-		if(b.length<2)
+		if (b.length < 2)
 			return a;
 		int[] c = new int[a.length + b.length];
-		for(int i=0; i<a.length;i++)
-			c[i]=a[i];
-		for(int i=0; i<b.length; i++)
-			c[i+a.length]=b[i];
+		for (int i = 0; i < a.length; i++)
+			c[i] = a[i];
+		for (int i = 0; i < b.length; i++)
+			c[i + a.length] = b[i];
 		return c;
 	}
 
+	public int[] tally(String string) {
+		int[] tally = new int[26];
+		char[] a = new char[string.length()];
+		string = string.toUpperCase();
+		string.getChars(0, string.length(), a, 0);
+		for (char i : a) {
+			if (Character.isLetter(i))
+				tally[(int) i - 65]++;
+		}
+		return tally;
+	}
+
 	public static void main(String[] args) {
-		int[] a = { 1, 2, 3, 4, 5, 6 };
+		// int[] a = { 1, 2, 3, 4, 5, 6 };
 		SeqSearch obj = new SeqSearch();
 
-		int[] b = { 1, 2, 3, 0 };
-		int[] c = obj.concatenate(a, b);
+		String a = "aabcddefgghiijj1";
+		int[] c = obj.tally(a);
 		for (int i = 0; i < c.length; i++)
-			System.out.println(c[i]);
+			System.out.println("c[" + i + "] = " + c[i]);
 		// System.out.println("i = " + obj.mean(a));
 	}
 }
