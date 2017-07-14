@@ -124,15 +124,39 @@ public class SeqSearch {
 		return a;
 	}
 
+	public double[][] transpose(double[][] original) {
+		double[][] trans = new double[original[0].length][original.length];
+		if (original.length > 0) {
+			for (int i = 0; i < original[0].length; i++) {
+				for (int j = 0; j < original.length; j++)
+					trans[i][j] = original[j][i];
+			}
+		}
+
+		return trans;
+
+	}
+
 	public static void main(String[] args) {
-		double[] a = { 1, 2, 3, 4, 5, 6 };
+		double[][] a = { { 1, 2 }, { 3, 4 } , {5,6}};
 		double[] b = { 1, 2, 3, 4, 5, 6, 7 };
 		SeqSearch obj = new SeqSearch();
 
-		// String a = "aabcddefgghiijj1";
-		// int[] c = obj.tally(a);
-		// for (int i = 0; i < c.length; i++)
-		// System.out.println("c[" + i + "] = " + c[i]);
-		System.out.println("innerProduct = " + obj.innerProd(a, b));
+		for (int i = 0; i < 3; i++) {
+			for (int j = 0; j < 2; j++) {
+				System.out.printf("  " + a[i][j]);
+			}
+			System.out.println();
+		}
+
+		double[][] d = obj.transpose(a);
+		for (int i = 0; i < 2; i++) {
+			for (int j = 0; j < 3; j++) {
+				System.out.printf("  " + d[i][j]);
+			}
+			System.out.println();
+		}
+
+		// System.out.println("innerProduct = " + obj.innerProd(a, b));
 	}
 }
