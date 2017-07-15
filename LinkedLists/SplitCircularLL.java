@@ -17,7 +17,7 @@ public class SplitCircularLL {
 			ptr1 = ptr1.getNext();
 			ptr2 = ptr2.getNext().getNext();
 		}
-		if (ptr2.getNext() != head)
+		if (ptr2.getNext() == head)
 			ptr2.setNext(null);
 		else
 			ptr2.getNext().setNext(null);
