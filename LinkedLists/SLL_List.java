@@ -27,6 +27,7 @@ public class SLL_List {
 
 	// display list
 	public void display() {
+		if(this.headNode==null) System.out.print("List has no elements ");
 		SLL_LinkNode temp_node = this.headNode;
 		while (temp_node != null) {
 			System.out.print(temp_node.getData() + " ");
