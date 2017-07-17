@@ -2,6 +2,11 @@ package Algorithms;
 
 import Implementation.*;
 
+/**
+ * This is for rotating the LL by k nodes
+ * @author pavithraraghavan
+ *
+ */
 public class RotateLL {
 	public SLL_LinkNode rotateLL(SLL_LinkNode head, int k) {
 		SLL_LinkNode temp = head, newhead;
