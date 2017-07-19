@@ -1,9 +1,11 @@
 package Algorithms;
 
 import Implementation.*;
+
 /**
- * this class is for reordering L1-->L2-->L3-->....-->L(n-1) --> L(n)
- * to L1-->L(n)-->L2-->L(n-1)-->.... 
+ * this class is for reordering L1-->L2-->L3-->....-->L(n-1) --> L(n) to
+ * L1-->L(n)-->L2-->L(n-1)-->....
+ * 
  * @author pavithraraghavan
  *
  */
@@ -26,7 +28,7 @@ public class ReorderLL {
 												// reversed second half
 
 		// link the 2 halves:
-		rec_linkLL(head,ptr1);
+		rec_linkLL(head, ptr1);
 	}
 
 	public SLL_LinkNode rec_linkLL(SLL_LinkNode head1, SLL_LinkNode head2) {
@@ -37,5 +39,15 @@ public class ReorderLL {
 		else
 			head2.setNext(temp1);
 		return head1;
+	}
+
+	public SLL_LinkNode partitionLL(SLL_LinkNode head, int k) {
+		// post: nodes with data < k should be placed before k and >k after k
+
+		// find the 1st node>k
+		SLL_LinkNode greater = head;
+		while (greater.getNext() != null && greater.getNext().getData() < k)
+			greater = greater.getNext();
+		return head;
 	}
 }
