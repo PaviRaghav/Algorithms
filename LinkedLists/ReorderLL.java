@@ -43,11 +43,33 @@ public class ReorderLL {
 
 	public SLL_LinkNode partitionLL(SLL_LinkNode head, int k) {
 		// post: nodes with data < k should be placed before k and >k after k
+		// newhead--> 1--> 2--> 3--> 4--> 5--> null
+		// find the 1st node>k; greater.getNext().getData() > k
+		SLL_LinkNode newhead = new SLL_LinkNode(), greater = newhead;
+		newhead.setNext(head);
 
-		// find the 1st node>k
-		SLL_LinkNode greater = head;
 		while (greater.getNext() != null && greater.getNext().getData() < k)
 			greater = greater.getNext();
-		return head;
+
+		// loop through and shift the >k to after greater
+		SLL_LinkNode curr, next, prev;
+		curr = greater.getNext().getNext();
+		prev = greater.getNext();
+
+		for (; curr != null; curr = next) {
+			next = curr.getNext();
+			if (curr.getData() < k) {
+				if (greater != newhead)
+					prev.setNext(next);
+				curr.setNext(greater.getNext());
+				greater.setNext(curr);
+				greater = curr;
+			} else {
+				prev = curr;
+			}
+		}
+
+		return newhead.getNext();
+
 	}
 }
