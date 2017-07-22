@@ -1,44 +1,38 @@
 package Implementation;
 
 public class Stack_Array<E> implements Stacks<E> {
-	private int size, top, maxSize;
+	private int top, maxSize;
 	private E StackArray[];
 
 	public Stack_Array(int size) {
 		StackArray = (E[]) new Object[size];
-		this.size = 0;
 		this.top = -1;
 		this.maxSize = size;
 	}
 
-	public E top() {
+	public E top() throws Exception {
 		if (this.top != -1)
 			return StackArray[this.top];
 		else
-			return null;
+			throw new Exception("Stack is empty");
 	}
 
-	public E pop() {
-		if (!isEmpty()) {
-			this.top--;
-			this.size--;
-			return StackArray[this.top+1];
-		} else
-			return null;
+	public E pop() throws Exception {
+		if (!isEmpty())
+			return StackArray[this.top--];
+		else
+			throw new Exception("Stack is empty");
 	}
 
-	public boolean push(E item) {
+	public void push(E item) throws Exception {
 		if (isFull())
-			return false;
-		else {
+			throw new Exception("Stack is already full");
+		else 
 			StackArray[++this.top] = item;
-			this.size++;
-			return true;
-		}
 	}
 
 	public int size() {
-		return this.size;
+		return this.top+1;
 	}
 
 	public boolean isFull() {
@@ -53,5 +47,16 @@ public class Stack_Array<E> implements Stacks<E> {
 			return true;
 		else
 			return false;
+	}
+
+	public String toString() {
+		String s = "{ ";
+		if (!isEmpty()) {
+			s = s + StackArray[0];
+			for (int i = 1; i <= this.top; i++) {
+				s = s + ", " + StackArray[i];
+			}
+		}
+		return s + "}";
 	}
 }
