@@ -18,12 +18,13 @@ public class Stack_DynArray<E> implements Stacks<E> {
 		return NewArray;
 	}
 
-	private E[] halfArray(E[] a) {
-		int len = a.length / 2;
+	private E[] halfArray() {
+		int len = this.maxSize / 2;
 		E NewArray[] = (E[]) new Object[len];
 		for (int i = 0; i < len; i++)
-			NewArray[i] = a[i];
+			NewArray[i] = this.StackArray[i];
 		this.maxSize = len;
+		this.top = len-1;
 		return NewArray;
 	}
 
@@ -35,7 +36,14 @@ public class Stack_DynArray<E> implements Stacks<E> {
 	}
 
 	public E pop() throws Exception {
-		return StackArray[1];
+		if (!isEmpty()) {
+			E x = StackArray[this.top];
+			if (this.top==this.maxSize/2)
+				this.StackArray = halfArray();
+			else this.top--;
+			return x;
+		} else
+			throw new Exception("Stack is empty");
 	}
 
 	public void push(E item) throws Exception {
@@ -58,6 +66,14 @@ public class Stack_DynArray<E> implements Stacks<E> {
 
 	public boolean isEmpty() {
 		if (this.top == -1)
+			return true;
+		else
+			return false;
+	}
+
+	public boolean isPow2(int i) {
+		double a = Math.log(i) / Math.log(2);
+		if (a == Math.round(a))
 			return true;
 		else
 			return false;
