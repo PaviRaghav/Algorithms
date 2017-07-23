@@ -12,12 +12,13 @@ public class Stack_DynArray<E> implements Stacks<E> {
 		E NewArray[] = (E[])new Object[a.length*2];
 		for(int i=0;i<a.length;i++)
 			NewArray[i]=a[i];
+		this.maxSize=a.length*2;
 		return NewArray;
 	}
 	public E top() throws Exception {}
 	public E pop() throws Exception {}
 	public void push(E item) throws Exception {}
-	public int size() {}
-	public boolean isFull() {}
-	public boolean isEmpty() {}
+	public int size() {return this.top+1;}
+	public boolean isFull() {if(top+1==this.maxSize) return true; else return false;}
+	public boolean isEmpty() {if(this.top==-1) return true; else return false; }
 }
