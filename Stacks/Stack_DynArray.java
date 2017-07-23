@@ -15,6 +15,14 @@ public class Stack_DynArray<E> implements Stacks<E> {
 		this.maxSize=a.length*2;
 		return NewArray;
 	}
+	private E[] halfArray(E[] a) {
+		int len=a.length/2;
+		E NewArray[] = (E[])new Object[len];
+		for(int i=0;i<len;i++)
+			NewArray[i]=a[i];
+		this.maxSize=len;
+		return NewArray;
+	}
 	public E top() throws Exception {}
 	public E pop() throws Exception {}
 	public void push(E item) throws Exception {}
