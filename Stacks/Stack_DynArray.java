@@ -29,4 +29,14 @@ public class Stack_DynArray<E> implements Stacks<E> {
 	public int size() {return this.top+1;}
 	public boolean isFull() {if(top+1==this.maxSize) return true; else return false;}
 	public boolean isEmpty() {if(this.top==-1) return true; else return false; }
+	public String toString() {
+		String s = "{ ";
+		if (!isEmpty()) {
+			s = s + StackArray[0];
+			for (int i = 1; i <= this.top; i++) {
+				s = s + ", " + StackArray[i];
+			}
+		}
+		return s + "}";
+	}
 }
