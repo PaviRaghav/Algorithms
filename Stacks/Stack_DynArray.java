@@ -71,14 +71,6 @@ public class Stack_DynArray<E> implements Stacks<E> {
 			return false;
 	}
 
-	public boolean isPow2(int i) {
-		double a = Math.log(i) / Math.log(2);
-		if (a == Math.round(a))
-			return true;
-		else
-			return false;
-	}
-
 	public String toString() {
 		String s = "{ ";
 		if (!isEmpty()) {
