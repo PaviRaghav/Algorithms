@@ -19,7 +19,7 @@ public class Stack_LL {
 	public int pop() throws Exception {
 		if (!isEmpty()) {
 			SLL_LinkNode temp = StackLL.getHead();
-			StackLL.setHead(temp.getNext());
+			StackLL.delete(0);
 			temp.setNext(null);
 			this.top--;
 			return temp.getData();
@@ -28,9 +28,7 @@ public class Stack_LL {
 	}
 
 	public void push(int item) throws Exception {
-		SLL_LinkNode temp = new SLL_LinkNode(item);
-		temp.setNext(this.StackLL.getHead());
-		this.StackLL.setHead(temp);
+		this.StackLL.add(item,0);
 		this.top++;
 	}
 
@@ -43,5 +41,11 @@ public class Stack_LL {
 			return true;
 		else
 			return false;
+	}
+	
+	public void display() {
+		System.out.println("");
+		this.StackLL.display();
+		System.out.println("");
 	}
 }
