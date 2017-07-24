@@ -7,5 +7,9 @@ public class Stack_LL<E> implements Stacks<E> {
 	public void push(E item) throws Exception {}
 	public int size() {}
 	public boolean isFull() {}
-	public boolean isEmpty() {}
+	public boolean isEmpty() {
+		if (this.top == -1)
+			return true;
+		else
+			return false;}
 }
