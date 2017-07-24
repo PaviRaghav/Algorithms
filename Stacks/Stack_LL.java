@@ -5,10 +5,10 @@ public class Stack_LL  {
 	private int top;
 	public Stack_LL() {
 		this.StackLL = new SLL_List();
-		this.top=-1;
+		this.top=0;
 	}
 	public int top() throws Exception {
-		if (this.top != -1)
+		if (!isEmpty())
 			return StackLL.getHead().getData();
 		else
 			throw new Exception("Stack is empty");
@@ -18,15 +18,18 @@ public class Stack_LL  {
 			SLL_LinkNode temp=StackLL.getHead();
 			StackLL.setHead(temp.getNext());
 			temp.setNext(null);
+			this.top--;
 			return temp.getData();
 		}
 		else
 			throw new Exception("Stack is empty");
 	}
 	public void push(int item) throws Exception {}
-	public int size() {}
+	public int size() {
+		return this.top;
+		}
 	public boolean isEmpty() {
-		if (this.top == -1)
+		if (this.top == 0)
 			return true;
 		else
 			return false;
