@@ -13,7 +13,16 @@ public class Stack_LL  {
 		else
 			throw new Exception("Stack is empty");
 	}
-	public int pop() throws Exception {}
+	public int pop() throws Exception {
+		if (!isEmpty()) {
+			SLL_LinkNode temp=StackLL.getHead();
+			StackLL.setHead(temp.getNext());
+			temp.setNext(null);
+			return temp.getData();
+		}
+		else
+			throw new Exception("Stack is empty");
+	}
 	public void push(int item) throws Exception {}
 	public int size() {}
 	public boolean isEmpty() {
