@@ -1,5 +1,12 @@
 package Implementation;
 
+/**
+ * Stack implementation with Arrays
+ * 
+ * @author pavithraraghavan
+ *
+ * @param <E>
+ */
 public class Stack_Array<E> implements Stacks<E> {
 	private int top, maxSize;
 	private E StackArray[];
@@ -27,12 +34,12 @@ public class Stack_Array<E> implements Stacks<E> {
 	public void push(E item) throws Exception {
 		if (isFull())
 			throw new Exception("Stack is already full");
-		else 
+		else
 			StackArray[++this.top] = item;
 	}
 
 	public int size() {
-		return this.top+1;
+		return this.top + 1;
 	}
 
 	public boolean isFull() {
@@ -53,7 +60,7 @@ public class Stack_Array<E> implements Stacks<E> {
 		String s = "{ ";
 		if (!isEmpty()) {
 			s = s + StackArray[0];
-			for (int i = 1; i <= this.top; i++) {
+			for (int i = 1; i < this.maxSize; i++) {
 				s = s + ", " + StackArray[i];
 			}
 		}
