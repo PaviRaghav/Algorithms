@@ -10,20 +10,18 @@ import Implementation.Stack_DynArray;
  */
 
 public class Postfix {
-	public int eval(String input) {
+	public int eval(String[] input) {
 		Stack_DynArray<Integer> stk = new Stack_DynArray<Integer>();
 		int x = 0;
 		try {
-			for (int i = 0; i < input.length(); i++) {
-				char temp = input.charAt(i);
-				if (Character.isDigit(temp))
-					stk.push((int) temp - 48);
-				else {
+			for (String temp : input) {
+				if (temp == "+" || temp == "*" || temp == "/" || temp == "-") {
 					int b = stk.pop();
 					int a = stk.pop();
 					int c = operator(a, b, temp);
 					stk.push(c);
-				}
+				} else
+					stk.push(Integer.parseInt(temp));
 			}
 			x = stk.pop();
 		} catch (Exception e) {
@@ -32,18 +30,16 @@ public class Postfix {
 		return x;
 	}
 
-	public int operator(int a, int b, char op) {
-		switch (op) {
-		case '+':
+	public int operator(int a, int b, String op) {
+		if (op == "+")
 			return a + b;
-		case '-':
+		else if (op == "-")
 			return a - b;
-		case '*':
+		else if (op == "*")
 			return a * b;
-		case '/':
+		else if (op == "/")
 			return a / b;
-		default:
+		else
 			return a;
-		}
 	}
 }
