@@ -10,22 +10,26 @@ import Implementation.Stack_DynArray;
  */
 
 public class Postfix {
-	public void eval(String input) {
+	public int eval(String input) {
+		Stack_DynArray<Integer> stk = new Stack_DynArray<Integer>();
+		int x = 0;
 		try {
-			Stack_DynArray<Integer> stk = new Stack_DynArray<Integer>();
 			for (int i = 0; i < input.length(); i++) {
 				char temp = input.charAt(i);
-				if(Character.isDigit(temp))
-					stk.push((int)temp);
+				if (Character.isDigit(temp))
+					stk.push((int) temp - 48);
 				else {
-					int b=stk.pop();
-					int a=stk.pop();
-					stk.push(operator(a,b,temp));
+					int b = stk.pop();
+					int a = stk.pop();
+					int c = operator(a, b, temp);
+					stk.push(c);
 				}
 			}
+			x = stk.pop();
 		} catch (Exception e) {
 			System.out.println(e);
 		}
+		return x;
 	}
 
 	public int operator(int a, int b, char op) {
