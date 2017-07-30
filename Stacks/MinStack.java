@@ -19,6 +19,12 @@ public class MinStack {
 	public void push(int item) {
 		try {
 			stk_main.push(item);
+			if (stk_aux.size() != 0) {
+				if (stk_aux.top() > item)
+					stk_aux.push(item);
+				else
+					stk_aux.push(stk_aux.top());
+			}
 		} catch (Exception e) {
 			System.out.println(e);
 		}
