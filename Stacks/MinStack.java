@@ -30,7 +30,8 @@ public class MinStack {
 					stk_aux.push(item);
 				else
 					stk_aux.push(stk_aux.top());
-			}
+			} else
+				stk_aux.push(item);
 		} catch (Exception e) {
 			System.out.println(e);
 		}
