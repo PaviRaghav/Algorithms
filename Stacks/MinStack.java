@@ -15,7 +15,7 @@ public class MinStack {
 	public int getMin() {
 		int x = 0;
 		try {
-			x = stk_aux.pop();
+			x = stk_aux.top();
 		} catch (Exception e) {
 			System.out.println(e);
 		}
@@ -34,5 +34,16 @@ public class MinStack {
 		} catch (Exception e) {
 			System.out.println(e);
 		}
+	}
+
+	public int pop() {
+		int x = 0;
+		try {
+			x = stk_main.pop();
+			stk_aux.pop();
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		return x;
 	}
 }
