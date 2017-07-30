@@ -13,7 +13,13 @@ public class MinStack {
 	private Stack_LL stk_aux = new Stack_LL();
 
 	public int getMin() {
-
+		int x = 0;
+		try {
+			x = stk_aux.pop();
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		return x;
 	}
 
 	public void push(int item) {
