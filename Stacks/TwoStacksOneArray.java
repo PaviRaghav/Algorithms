@@ -17,24 +17,39 @@ public class TwoStacksOneArray {
 		this.top2 = len;
 	}
 
-	public boolean stk1_isEmpty() {
-		if (this.top1 == -1)
+	public boolean isEmpty(int StackID) {
+		if (StackID == 1) {
+			if (this.top1 == -1)
+				return true;
+			else
+				return false;
+		} else if (StackID == 2) {
+			if (this.top1 == this.len)
+				return true;
+			else
+				return false;
+		} else
 			return true;
-		else
-			return false;
 	}
 
-	public boolean stk2_isEmpty() {
-		if (this.top1 == this.len)
-			return true;
-		else
-			return false;
-	}
-
-	public boolean stk_isFull() {
+	public boolean isFull() {
 		if (this.top1 == this.top2)
 			return true;
 		else
 			return false;
+	}
+
+	public void push(int StackID, int data) {
+		if (StackID == 1) {
+			if (!isFull())
+				stk[++this.top1] = data;
+			else
+				System.out.println("Stack is full");
+		} else if (StackID == 2) {
+			if (!isFull())
+				stk[--this.top2] = data;
+			else
+				System.out.println("Stack is full");
+		}
 	}
 }
