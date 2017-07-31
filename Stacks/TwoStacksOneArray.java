@@ -18,14 +18,21 @@ public class TwoStacksOneArray {
 	}
 
 	public boolean stk1_isEmpty() {
-		if (top1 == -1)
+		if (this.top1 == -1)
 			return true;
 		else
 			return false;
 	}
 
 	public boolean stk2_isEmpty() {
-		if (top1 == this.len)
+		if (this.top1 == this.len)
+			return true;
+		else
+			return false;
+	}
+
+	public boolean stk_isFull() {
+		if (this.top1 == this.top2)
 			return true;
 		else
 			return false;
