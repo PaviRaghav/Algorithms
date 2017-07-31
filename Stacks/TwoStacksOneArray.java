@@ -52,4 +52,42 @@ public class TwoStacksOneArray {
 				System.out.println("Stack is full");
 		}
 	}
+
+	public String pop(int StackID) {
+		if (StackID == 1) {
+			if (!isEmpty(StackID))
+				return Integer.toString(stk[this.top1--]);
+			else {
+				System.out.println("Stack is empty");
+				return null;
+			}
+		} else if (StackID == 2) {
+			if (!isEmpty(StackID))
+				return Integer.toString(stk[this.top2++]);
+			else {
+				System.out.println("Stack is empty");
+				return null;
+			}
+		} else
+			return null;
+	}
+
+	public String top(int StackID) {
+		if (StackID == 1) {
+			if (!isEmpty(StackID))
+				return Integer.toString(stk[this.top1]);
+			else {
+				System.out.println("Stack is empty");
+				return null;
+			}
+		} else if (StackID == 2) {
+			if (!isEmpty(StackID))
+				return Integer.toString(stk[this.top2]);
+			else {
+				System.out.println("Stack is empty");
+				return null;
+			}
+		} else
+			return null;
+	}
 }
