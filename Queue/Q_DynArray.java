@@ -23,7 +23,7 @@ public class Q_DynArray {
 	private int[] half_size() {
 		capacity = capacity / 2;
 		int[] new_Q = new int[capacity];
-		for (int i = (front + 1) % capacity; i < rear - 1; i++)
+		for (int i = (front + 1) % capacity; i <= rear - 1; i++)
 			new_Q[i] = Q[i];
 		return new_Q;
 	}
