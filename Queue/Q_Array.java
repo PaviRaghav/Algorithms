@@ -51,6 +51,13 @@ public class Q_Array {
 			throw new IllegalStateException("Stack is empty: underflow");
 	}
 
+	public int peek() {
+		if (!isEmpty())
+			return Q[front];
+		else
+			throw new IllegalStateException("Stack is empty: underflow");
+	}
+
 	public String toString() {
 		String s = "";
 		for (int i = (front + 1) % capacity; i <= rear; i++)

@@ -37,6 +37,13 @@ public class Q_LL {
 			throw new IllegalStateException("Queue is empty");
 	}
 
+	public int peek() {
+		if (!isEmpty())
+			return front.getData();
+		else
+			throw new IllegalStateException("Queue is empty");
+	}
+
 	public String toString() {
 		String s = "";
 		SLL_LinkNode temp = front;
