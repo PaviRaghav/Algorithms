@@ -20,13 +20,11 @@ public class Q_LL {
 
 	public void enqueue(int data) {
 		SLL_LinkNode node = new SLL_LinkNode(data);
-		if (isEmpty()) {
+		if (isEmpty())
 			front = node;
-			rear = node;
-		} else {
+		else
 			rear.setNext(node);
-			rear = node;
-		}
+		rear = node;
 	}
 
 	public int dequeue() {
