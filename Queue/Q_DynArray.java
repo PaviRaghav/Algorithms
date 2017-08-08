@@ -1,5 +1,11 @@
 package Implementation;
 
+/**
+ * implementation of queue using dynamic array without using size variable
+ * 
+ * @author pavithraraghavan
+ *
+ */
 public class Q_DynArray {
 	private int front, rear;
 	private int capacity;
