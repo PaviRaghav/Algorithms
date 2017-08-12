@@ -59,4 +59,12 @@ public class BinaryTree {
 			PreOrder(root.getRight());
 		}
 	}
+
+	public void InOrder(BinaryTreeNode root) {
+		while (root != null) {
+			InOrder(root.getLeft());
+			System.out.println(root.getData());
+			InOrder(root.getRight());
+		}
+	}
 }
