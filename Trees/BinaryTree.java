@@ -51,4 +51,12 @@ public class BinaryTree {
 			}
 		}
 	}
+
+	public void PreOrder(BinaryTreeNode root) {
+		while (root != null) {
+			System.out.println(root.getData());
+			PreOrder(root.getLeft());
+			PreOrder(root.getRight());
+		}
+	}
 }
