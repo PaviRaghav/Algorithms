@@ -60,6 +60,25 @@ public class BinaryTree {
 		}
 	}
 
+	public static void ite_preorder(BinaryTreeNode root) {
+		if (root == null)
+			return;
+		Stack_DynArray<BinaryTreeNode> stk = new Stack_DynArray<BinaryTreeNode>();
+		try {
+			stk.push(root);
+			while (!stk.isEmpty()) {
+				BinaryTreeNode temp = stk.pop();
+				System.out.println(temp.getData());
+				if (temp.getRight() != null)
+					stk.push(temp.getRight());
+				if (temp.getLeft() != null)
+					stk.push(temp.getLeft());
+			}
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+	}
+
 	public void InOrder(BinaryTreeNode root) {
 		while (root != null) {
 			InOrder(root.getLeft());
