@@ -121,4 +121,12 @@ public class BinaryTree {
 			System.out.println(root.getData());
 		}
 	}
+
+	public void ite_PostOrder(BinaryTreeNode root) {
+		try {
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+	}
 }
