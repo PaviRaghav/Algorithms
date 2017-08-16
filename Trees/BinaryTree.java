@@ -124,7 +124,26 @@ public class BinaryTree {
 
 	public void ite_PostOrder(BinaryTreeNode root) {
 		try {
-			
+			Stack_DynArray<BinaryTreeNode> stk = new Stack_DynArray<BinaryTreeNode>();
+			boolean flag = false;
+			BinaryTreeNode curr = root;
+			while (!flag) {
+				if (curr != null) {
+					stk.push(curr);
+					curr = curr.getLeft();
+				} else {
+					if (stk.isEmpty())
+						flag = true;
+					else {
+						BinaryTreeNode temp = stk.pop();
+						if (curr == temp.getRight())
+							System.out.println(temp.getData());
+						else
+							stk.push(temp);
+						curr = stk.top().getRight();
+					}
+				}
+			}
 		} catch (Exception e) {
 			System.out.println(e);
 		}
