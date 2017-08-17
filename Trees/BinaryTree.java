@@ -126,21 +126,24 @@ public class BinaryTree {
 		try {
 			Stack_DynArray<BinaryTreeNode> stk = new Stack_DynArray<BinaryTreeNode>();
 			boolean flag = false;
-			BinaryTreeNode curr = root;
+			BinaryTreeNode curr = root, prev = null;
+			
 			while (!flag) {
-				if (curr != null) {
+				if (curr != null && curr != prev) {
 					stk.push(curr);
 					curr = curr.getLeft();
 				} else {
 					if (stk.isEmpty())
 						flag = true;
 					else {
-						BinaryTreeNode temp = stk.pop();
-						if (curr == temp.getRight())
+						prev = curr;
+						BinaryTreeNode temp = stk.top();
+						if (prev == temp.getRight()) {
 							System.out.println(temp.getData());
-						else
-							stk.push(temp);
-						curr = stk.top().getRight();
+							prev = temp;
+							curr = stk.top();
+						} else
+							curr = curr.getRight();
 					}
 				}
 			}
