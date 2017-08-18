@@ -7,21 +7,21 @@ public class BinaryTree {
 		root = null;
 	}
 
-	public void insert(int data) {
+	public void insert_BST(int data) {
 		if (this.root == null)
 			root = new BinaryTreeNode(data);
 		else
-			insert(this.root, data);
+			insert_BST(this.root, data);
 	}
 
-	public BinaryTreeNode insert(BinaryTreeNode node, int data) {
+	public BinaryTreeNode insert_BST(BinaryTreeNode node, int data) {
 		if (node == null)
 			node = new BinaryTreeNode(data);
 		else {
 			if (node.getData() < data)
-				node.setRight(insert(node.getRight(), data));
+				node.setRight(insert_BST(node.getRight(), data));
 			else
-				node.setLeft(insert(node.getLeft(), data));
+				node.setLeft(insert_BST(node.getLeft(), data));
 		}
 		return node;
 	}
