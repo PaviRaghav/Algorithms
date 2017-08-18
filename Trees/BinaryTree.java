@@ -165,4 +165,16 @@ public class BinaryTree {
 				q.Enqueue(temp.getRight());
 		}
 	}
+
+	public int maxInBinaryTree(BinaryTreeNode root) {
+		if (root.getLeft() == null && root.getRight() == null)
+			return 0;
+		else if (root.getLeft() == null)
+			return root.getRight().getData();
+		else if (root.getRight() == null)
+			return root.getLeft().getData();
+		else {
+			return Math.max(maxInBinaryTree(root.getLeft()), maxInBinaryTree(root.getRight()));
+		}
+	}
 }
