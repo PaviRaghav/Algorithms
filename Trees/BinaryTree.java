@@ -205,4 +205,21 @@ public class BinaryTree {
 			return searchBinTree(root.getLeft(), data) || searchBinTree(root.getRight(), data);
 		}
 	}
+
+	public boolean searchBinTree_ite(BinaryTreeNode root, int data) {
+		Q_DynArray<BinaryTreeNode> q = new Q_DynArray<BinaryTreeNode>();
+		if (root == null)
+			throw new IllegalStateException("Tree is empty");
+		q.Enqueue(root);
+		while (!q.isEmpty()) {
+			BinaryTreeNode temp = q.Dequeue();
+			if (temp.getData() == data)
+				return true;
+			if (temp.getLeft() != null)
+				q.Enqueue(temp.getLeft());
+			if (temp.getRight() != null)
+				q.Enqueue(temp.getRight());
+		}
+		return false;
+	}
 }
