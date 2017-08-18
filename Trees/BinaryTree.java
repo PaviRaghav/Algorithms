@@ -26,6 +26,28 @@ public class BinaryTree {
 		return node;
 	}
 
+	public void insert_BT_ite(int data) {
+		Q_DynArray<BinaryTreeNode> q = new Q_DynArray<BinaryTreeNode>();
+		BinaryTreeNode new_node = new BinaryTreeNode(data);
+		boolean flag = true;
+		if (root == null)
+			root = new_node;
+		while (flag) {
+			BinaryTreeNode temp = q.Dequeue();
+			System.out.println(temp.getData());
+			if (temp.getLeft() == null) {
+				temp.setLeft(new_node);
+				flag = false;
+			} else if (temp.getLeft() != null)
+				q.Enqueue(temp.getLeft());
+			else if (temp.getRight() == null) {
+				temp.setRight(new_node);
+				flag = false;
+			} else
+				q.Enqueue(temp.getRight());
+		}
+	}
+
 	public void insert_ite(int data) {
 		BinaryTreeNode newOne = new BinaryTreeNode(data);
 		if (this.root == null)
