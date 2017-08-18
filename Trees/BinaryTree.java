@@ -151,4 +151,18 @@ public class BinaryTree {
 			System.out.println(e);
 		}
 	}
+
+	public static void levelOrderTraversal(BinaryTreeNode root) {
+		Q_DynArray<BinaryTreeNode> q = new Q_DynArray<BinaryTreeNode>();
+		if (root == null)
+			return;
+		while (!q.isEmpty()) {
+			BinaryTreeNode temp = q.Dequeue();
+			System.out.println(temp.getData());
+			if (temp.getLeft() != null)
+				q.Enqueue(temp.getLeft());
+			if (temp.getRight() != null)
+				q.Enqueue(temp.getRight());
+		}
+	}
 }
