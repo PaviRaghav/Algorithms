@@ -177,4 +177,22 @@ public class BinaryTree {
 			return Math.max(maxInBinaryTree(root.getLeft()), maxInBinaryTree(root.getRight()));
 		}
 	}
+
+	public int maxBinTree_ite(BinaryTreeNode root) {
+		Q_DynArray<BinaryTreeNode> q = new Q_DynArray<BinaryTreeNode>();
+		if (root == null)
+			throw new IllegalStateException("Tree is empty");
+		int max = Integer.MIN_VALUE;
+		q.Enqueue(root);
+		while (!q.isEmpty()) {
+			BinaryTreeNode temp = q.Dequeue();
+			if (max < temp.getData())
+				max = temp.getData();
+			if (temp.getLeft() != null)
+				q.Enqueue(temp.getLeft());
+			if (temp.getRight() != null)
+				q.Enqueue(temp.getRight());
+		}
+		return max;
+	}
 }
