@@ -195,4 +195,14 @@ public class BinaryTree {
 		}
 		return max;
 	}
+
+	public boolean searchBinTree(BinaryTreeNode root, int data) {
+		if (root == null)
+			return false;
+		if (root.getData() == data)
+			return true;
+		else {
+			return searchBinTree(root.getLeft(), data) || searchBinTree(root.getRight(), data);
+		}
+	}
 }
