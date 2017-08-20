@@ -82,6 +82,26 @@ public class BinaryTree {
 		return count + size(root.getLeft()) + size(root.getRight());
 	}
 
+	public int size_ite(BinaryTreeNode root) {
+		if (root == null)
+			return 0;
+		Q_DynArray<BinaryTreeNode> q = new Q_DynArray<BinaryTreeNode>();
+		q.Enqueue(root);
+		int count = 1;
+		while (!q.isEmpty()) {
+			BinaryTreeNode temp = q.Dequeue();
+			if (temp.getLeft() != null) {
+				count++;
+				q.Enqueue(temp.getLeft());
+			}
+			if (temp.getRight() != null) {
+				count++;
+				q.Enqueue(temp.getRight());
+			}
+		}
+		return count;
+	}
+
 	public void PreOrder(BinaryTreeNode root) {
 		while (root != null) {
 			System.out.println(root.getData());
