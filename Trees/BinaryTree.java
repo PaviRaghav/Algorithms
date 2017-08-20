@@ -216,6 +216,27 @@ public class BinaryTree {
 		}
 	}
 
+	public static void reverseLevelOrderTraversal(BinaryTreeNode root) {
+		Q_DynArray<BinaryTreeNode> q = new Q_DynArray<BinaryTreeNode>();
+		Stack_DynArray<BinaryTreeNode> stk = new Stack_DynArray<BinaryTreeNode>();
+		if (root == null)
+			return;
+		try {
+			while (!q.isEmpty()) {
+				BinaryTreeNode temp = q.Dequeue();
+				stk.push(temp);
+				if (temp.getLeft() != null)
+					q.Enqueue(temp.getRight());
+				if (temp.getRight() != null)
+					q.Enqueue(temp.getLeft());
+			}
+			while (!stk.isEmpty())
+				System.out.println(stk.pop() + " ");
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+	}
+
 	public int maxInBinaryTree(BinaryTreeNode root) {
 		if (root.getLeft() == null && root.getRight() == null)
 			return 0;
