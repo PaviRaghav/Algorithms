@@ -34,7 +34,6 @@ public class BinaryTree {
 			root = new_node;
 		while (flag) {
 			BinaryTreeNode temp = q.Dequeue();
-			System.out.println(temp.getData());
 			if (temp.getLeft() == null) {
 				temp.setLeft(new_node);
 				flag = false;
@@ -48,7 +47,7 @@ public class BinaryTree {
 		}
 	}
 
-	public void insert_ite(int data) {
+	public void insert_BST_ite(int data) {
 		BinaryTreeNode newOne = new BinaryTreeNode(data);
 		if (this.root == null)
 			this.root = newOne;
@@ -72,6 +71,15 @@ public class BinaryTree {
 				}
 			}
 		}
+	}
+
+	public int size(BinaryTreeNode root) {
+		int count;
+		if (root != null)
+			count = 1;
+		else
+			count = 0;
+		return count + size(root.getLeft()) + size(root.getRight());
 	}
 
 	public void PreOrder(BinaryTreeNode root) {
