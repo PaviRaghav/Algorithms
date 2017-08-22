@@ -73,6 +73,17 @@ public class BinaryTree {
 		}
 	}
 
+	public int depth(BinaryTreeNode root) {
+		if (root == null)
+			return 0;
+		int left = size(root.getLeft());
+		int right = size(root.getRight());
+		if (left > right)
+			return left + 1;
+		else
+			return right + 1;
+	}
+
 	public int size(BinaryTreeNode root) {
 		int count;
 		if (root != null)
