@@ -84,6 +84,36 @@ public class BinaryTree {
 			return right + 1;
 	}
 
+	public int depth_ite(BinaryTreeNode root) {
+		if (root == null)
+			return 0;
+		int max = 0;
+		Stack_DynArray<BinaryTreeNode> stk = new Stack_DynArray<BinaryTreeNode>();
+		BinaryTreeNode curr, prev = null;
+		try {
+			stk.push(root);
+			while (!stk.isEmpty()) {
+				curr = stk.top();
+				if (prev == null || prev.getLeft() == curr || prev.getRight() == curr) {
+					if (curr.getLeft() != null)
+						stk.push(curr.getLeft());
+					else if (curr.getRight() != null)
+						stk.push(curr.getRight());
+				} else if (prev == curr.getLeft()) {
+					if (curr.getRight() != null)
+						stk.push(curr.getRight());
+				} else
+					stk.pop();
+				prev = curr;
+				if (max < stk.size())
+					max = stk.size();
+			}
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		return max;
+	}
+
 	public int size(BinaryTreeNode root) {
 		int count;
 		if (root != null)
