@@ -6,30 +6,30 @@ package Implementation;
  * @author pavithraraghavan
  *
  */
-public class Q_DynArray {
+public class Q_DynArray<E> {
 	private int front, rear;
 	private int capacity;
-	private int[] Q;
+	private E[] Q;
 
 	public Q_DynArray() {
 		capacity = 2;
-		Q = new int[capacity];
+		Q = (E[]) new Object[capacity];
 		front = 0;
 		rear = 0;
 	}
 
-	private int[] double_size() {
+	private E[] double_size() {
 		capacity = capacity * 2;
-		int[] new_Q = new int[capacity];
-		for (int i = (front + 1) % capacity; i <= rear; i++)
+		E[] new_Q = (E[]) new Object[capacity];
+		for (int i = (front) % capacity; i <= rear; i++)
 			new_Q[i] = Q[i];
 		return new_Q;
 	}
 
-	private int[] half_size() {
+	private E[] half_size() {
 		capacity = capacity / 2;
-		int[] new_Q = new int[capacity];
-		for (int i = (front + 1) % capacity; i <= rear - 1; i++)
+		E[] new_Q = (E[]) new Object[capacity];
+		for (int i = (front) % capacity; i < rear; i++)
 			new_Q[i] = Q[i];
 		return new_Q;
 	}
@@ -42,37 +42,38 @@ public class Q_DynArray {
 		return (front == rear);
 	}
 
-	public void Enqueue(int data) {
+	public void Enqueue(E data) {
 		if (isFull())
 			Q = double_size();
-		rear = (rear + 1) % capacity;
 		Q[rear] = data;
+		rear = (rear + 1) % capacity;
 
 	}
 
-	public int Dequeue() {
+	public E Dequeue() {
 		if (!isEmpty()) {
-			int i = Q[front];
-			Q[front] = Integer.MIN_VALUE;
-			front = (front + 1) % capacity;
+			E i = Q[front % capacity];
+			Q[front % capacity] = null;
+
 			if (rear + 1 == capacity / 2)
 				Q = half_size();
+			front = (front + 1) % capacity;
 			return i;
 		} else
-			throw new IllegalStateException("Stack is empty: underflow");
+			throw new IllegalStateException("Queue is empty: underflow");
 	}
 
-	public int peek() {
+	public E peek() {
 		if (!isEmpty())
-			return Q[front];
+			return Q[front % capacity];
 		else
-			throw new IllegalStateException("Stack is empty: underflow");
+			throw new IllegalStateException("Queue is empty: underflow");
 	}
 
 	public String toString() {
 		String s = "";
-		for (int i = (front + 1) % capacity; i <= rear; i++)
-			s = s + Q[(front + i) % capacity] + " ";
+		for (int i = (front) % capacity; i < rear; i++)
+			s = s + Q[i] + " ";
 		return s;
 	}
 }
