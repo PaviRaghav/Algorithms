@@ -1,7 +1,7 @@
 package Implementation;
 
 /**
- * implementation of queue using dynamic array without using size variable
+ * implementation of queue using dynamic array
  * 
  * @author pavithraraghavan
  *
@@ -19,17 +19,22 @@ public class Q_DynArray<E> {
 	}
 
 	private E[] double_size() {
+		E[] new_Q = (E[]) new Object[capacity * 2];
+		int i = front;
+		while (i % capacity != rear) {
+			new_Q[i - front] = Q[i % capacity];
+			i++;
+		}
+		front = 0;
+		rear = i-1;
 		capacity = capacity * 2;
-		E[] new_Q = (E[]) new Object[capacity];
-		for (int i = (front) % capacity; i <= rear; i++)
-			new_Q[i] = Q[i];
 		return new_Q;
 	}
 
 	private E[] half_size() {
 		capacity = capacity / 2;
 		E[] new_Q = (E[]) new Object[capacity];
-		for (int i = (front) % capacity; i < rear; i++)
+		for (int i = 0; i < capacity; i++)
 			new_Q[i] = Q[i];
 		return new_Q;
 	}
@@ -39,7 +44,7 @@ public class Q_DynArray<E> {
 	}
 
 	public boolean isEmpty() {
-		return (front == rear);
+		return (rear == front);
 	}
 
 	public void Enqueue(E data) {
@@ -47,7 +52,6 @@ public class Q_DynArray<E> {
 			Q = double_size();
 		Q[rear] = data;
 		rear = (rear + 1) % capacity;
-
 	}
 
 	public E Dequeue() {
@@ -55,8 +59,9 @@ public class Q_DynArray<E> {
 			E i = Q[front % capacity];
 			Q[front % capacity] = null;
 
-			if (rear + 1 == capacity / 2)
-				Q = half_size();
+			/*
+			 * if (size -1 == capacity / 2 && size>2) Q = half_size();
+			 */
 			front = (front + 1) % capacity;
 			return i;
 		} else
@@ -72,8 +77,11 @@ public class Q_DynArray<E> {
 
 	public String toString() {
 		String s = "";
-		for (int i = (front) % capacity; i < rear; i++)
+		int i = front;
+		while (i % capacity != rear) {
 			s = s + Q[i] + " ";
+			i++;
+		}
 		return s;
 	}
 }
