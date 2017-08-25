@@ -73,18 +73,18 @@ public class BinaryTree {
 		}
 	}
 
-	public int depth(BinaryTreeNode root) {
+	public static int depth(BinaryTreeNode root) {
 		if (root == null)
 			return 0;
-		int left = size(root.getLeft());
-		int right = size(root.getRight());
+		int left = depth(root.getLeft());
+		int right = depth(root.getRight());
 		if (left > right)
 			return left + 1;
 		else
 			return right + 1;
 	}
 
-	public int depth_ite(BinaryTreeNode root) {
+	public static int depth_ite(BinaryTreeNode root) {
 		if (root == null)
 			return 0;
 		int max = 0;
@@ -114,16 +114,39 @@ public class BinaryTree {
 		return max;
 	}
 
-	public int size(BinaryTreeNode root) {
-		int count;
-		if (root != null)
-			count = 1;
-		else
-			count = 0;
-		return count + size(root.getLeft()) + size(root.getRight());
+	public static int depth_levelorder(BinaryTreeNode root) {
+		if (root == null)
+			return 0;
+		Q_DynArray<BinaryTreeNode> q = new Q_DynArray<BinaryTreeNode>();
+		// BinaryTreeNode nul = new BinaryTreeNode(0);
+		q.Enqueue(root);
+		q.Enqueue(null);
+		int depth = 0;
+		while (!q.isEmpty()) {
+			BinaryTreeNode temp = q.Dequeue();
+			if (temp != null) {
+				if (temp.getLeft() != null)
+					q.Enqueue(temp.getLeft());
+				if (temp.getRight() != null)
+					q.Enqueue(temp.getRight());
+			} else {
+				depth++;
+				if (!q.isEmpty()) {
+					q.Enqueue(null);
+				}
+			}
+		}
+		return depth;
 	}
 
-	public int size_ite(BinaryTreeNode root) {
+	public static int size(BinaryTreeNode root) {
+		if (root == null)
+			return 0;
+		else
+			return 1 + size(root.getLeft()) + size(root.getRight());
+	}
+
+	public static int size_ite(BinaryTreeNode root) {
 		if (root == null)
 			return 0;
 		Q_DynArray<BinaryTreeNode> q = new Q_DynArray<BinaryTreeNode>();
@@ -247,6 +270,7 @@ public class BinaryTree {
 		Q_DynArray<BinaryTreeNode> q = new Q_DynArray<BinaryTreeNode>();
 		if (root == null)
 			return;
+		q.Enqueue(root);
 		while (!q.isEmpty()) {
 			BinaryTreeNode temp = q.Dequeue();
 			System.out.println(temp.getData());
@@ -333,5 +357,17 @@ public class BinaryTree {
 				q.Enqueue(temp.getRight());
 		}
 		return false;
+	}
+
+	public static void main(String[] args) {
+		BinaryTreeNode root = new BinaryTreeNode(1);
+		root.left = new BinaryTreeNode(2);
+		root.right = new BinaryTreeNode(3);
+		root.left.left = new BinaryTreeNode(4);
+		root.right.left = new BinaryTreeNode(5);
+		root.right.right = new BinaryTreeNode(6);
+		root.right.right.right = new BinaryTreeNode(7);
+		// levelOrderTraversal(root);
+		System.out.println(depth_levelorder(root));
 	}
 }
