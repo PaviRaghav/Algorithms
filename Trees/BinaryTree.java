@@ -358,16 +358,4 @@ public class BinaryTree {
 		}
 		return false;
 	}
-
-	public static void main(String[] args) {
-		BinaryTreeNode root = new BinaryTreeNode(1);
-		root.left = new BinaryTreeNode(2);
-		root.right = new BinaryTreeNode(3);
-		root.left.left = new BinaryTreeNode(4);
-		root.right.left = new BinaryTreeNode(5);
-		root.right.right = new BinaryTreeNode(6);
-		root.right.right.right = new BinaryTreeNode(7);
-		// levelOrderTraversal(root);
-		System.out.println(depth_levelorder(root));
-	}
 }
