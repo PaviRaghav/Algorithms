@@ -138,6 +138,37 @@ public class BinaryTree {
 		}
 		return depth;
 	}
+	
+	public static int depth_min(BinaryTreeNode root) {
+		if (root == null)
+			return 0;
+		Q_DynArray<BinaryTreeNode> q = new Q_DynArray<BinaryTreeNode>();
+		BinaryTreeNode nul = new BinaryTreeNode(0);
+		q.Enqueue(root);
+		q.Enqueue(null);
+		int depth = 0;
+		while (!q.isEmpty()) {
+			BinaryTreeNode temp = q.Dequeue();
+			if (temp != null && temp != nul) {
+				if(temp.getLeft()==null && temp.getRight() == null)
+					q.Enqueue(nul);
+				if (temp.getLeft() != null)
+					q.Enqueue(temp.getLeft());
+				if (temp.getRight() != null)
+					q.Enqueue(temp.getRight());
+			} else if (temp==null) {
+				depth++;
+				if (!q.isEmpty()) {
+					q.Enqueue(null);
+				}
+			}
+			else if(temp==nul) {
+				//depth++;
+				break;
+			}
+		}
+		return depth;
+	}
 
 	public static int size(BinaryTreeNode root) {
 		if (root == null)
