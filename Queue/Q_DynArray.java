@@ -26,7 +26,7 @@ public class Q_DynArray<E> {
 			i++;
 		}
 		front = 0;
-		rear = i-1;
+		rear = capacity-1;
 		capacity = capacity * 2;
 		return new_Q;
 	}
@@ -83,5 +83,17 @@ public class Q_DynArray<E> {
 			i++;
 		}
 		return s;
+	}
+	
+	public static void main(String[] args) {
+		Q_DynArray<Integer> q = new Q_DynArray<Integer>();
+		q.Enqueue(1);
+		q.Dequeue();
+		q.Enqueue(2);
+		q.Enqueue(3);
+		q.Enqueue(4);
+		System.out.println(q.toString());
+		q.Dequeue();
+		System.out.println(q.toString());
 	}
 }
