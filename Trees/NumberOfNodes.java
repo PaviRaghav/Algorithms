@@ -40,18 +40,8 @@ public class NumberOfNodes {
 	}
 
 	public static int diameterOfTree(BinaryTreeNode root) {
-		if (root == null)
-			return 0;
-		int dia = 0;
-		Q_DynArray<BinaryTreeNode> q = new Q_DynArray<BinaryTreeNode>();
-		q.Enqueue(root);
-		while(!q.isEmpty()){
-			BinaryTreeNode temp = q.Dequeue();
-			if(temp!=null){
-				if(temp.getLeft()==null && temp.getRight()==null) q.Enqueue(null);
-				if(temp.getLeft()!=null) q.Enqueue(temp.getLeft());
-				if(temp.getRight()!=null) q.Enqueue(temp.getRight());
-			}
+		//diameter of a tree is the largest number of nodes between leaves
+		
 				
 			
 		}
