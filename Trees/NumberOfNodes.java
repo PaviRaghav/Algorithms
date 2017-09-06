@@ -39,13 +39,18 @@ public class NumberOfNodes {
 		return count;
 	}
 
+	// private static int diameter = 0;
+
 	public static int diameterOfTree(BinaryTreeNode root) {
-		//diameter of a tree is the largest number of nodes between leaves
-		
-				
-			
-		}
-		return dia;
+		if (root == null)
+			return 0;
+		int left, right, diameter = 0;
+		left = diameterOfTree(root.getLeft());
+		right = diameterOfTree(root.getRight());
+		if (diameter < left + right + 1)
+			diameter = left + right + 1;
+		//System.out.println(diameter);
+		return Math.max(left, right) + 1;
 	}
 
 	public static void main(String[] args) {
@@ -58,6 +63,6 @@ public class NumberOfNodes {
 		root.right.right = new BinaryTreeNode(6);
 		root.right.right.right = new BinaryTreeNode(7);
 		// levelOrderTraversal(root);
-		System.out.println(noOfFullNodes(root));
+		System.out.println(diameterOfTree(root));
 	}
 }
