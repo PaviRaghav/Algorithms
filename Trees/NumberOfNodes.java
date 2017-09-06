@@ -49,20 +49,36 @@ public class NumberOfNodes {
 		right = diameterOfTree(root.getRight());
 		if (diameter < left + right + 1)
 			diameter = left + right + 1;
-		//System.out.println(diameter);
+		// System.out.println(diameter);
 		return Math.max(left, right) + 1;
 	}
 
-	public static void main(String[] args) {
-		BinaryTreeNode root = new BinaryTreeNode(1);
-		root.left = new BinaryTreeNode(2);
-		root.right = new BinaryTreeNode(3);
-		root.left.left = new BinaryTreeNode(4);
-		root.left.right = new BinaryTreeNode(4);
-		root.right.left = new BinaryTreeNode(5);
-		root.right.right = new BinaryTreeNode(6);
-		root.right.right.right = new BinaryTreeNode(7);
-		// levelOrderTraversal(root);
-		System.out.println(diameterOfTree(root));
+	public static int widthOfTree(BinaryTreeNode root) {
+		if (root == null)
+			return 0;
+		Q_DynArray<BinaryTreeNode> q = new Q_DynArray<BinaryTreeNode>();
+		q.Enqueue(root);
+		q.Enqueue(null);
+		int width = 1, level_width = 1;
+		while (!q.isEmpty()) {
+			BinaryTreeNode temp = q.Dequeue();
+			if (temp == null) {
+				if (!q.isEmpty())
+					q.Enqueue(null);
+				if (width < level_width)
+					width = level_width;
+				level_width = 0;
+			} else {
+				if (temp.getLeft() != null) {
+					q.Enqueue(temp.getLeft());
+					level_width++;
+				}
+				if (temp.getRight() != null) {
+					q.Enqueue(temp.getRight());
+					level_width++;
+				}
+			}
+		}
+		return width;
 	}
 }
