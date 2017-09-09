@@ -81,4 +81,30 @@ public class NumberOfNodes {
 		}
 		return width;
 	}
+
+	public boolean sumExists(BinaryTreeNode root, int sum) {
+		if (root == null)
+			return false;
+		int total = root.getData();
+		total = total(root, sum);
+		if (total == sum)
+			return true;
+		else
+			return false;
+	}
+
+	public int total(BinaryTreeNode root, int sum) {
+		try {
+			Stack_DynArray<BinaryTreeNode> stk = new Stack_DynArray<BinaryTreeNode>();
+			int total=0;
+			stk.push(root);
+			BinaryTreeNode temp;
+			while(!stk.isEmpty()){
+				temp=stk.pop();
+				total+=temp.getData();
+			}
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+	}
 }
