@@ -82,7 +82,7 @@ public class NumberOfNodes {
 		return width;
 	}
 
-	public boolean sumExists(BinaryTreeNode root, int sum) {
+	public static boolean sumExists(BinaryTreeNode root, int sum) {
 		if (root == null)
 			return false;
 		int total = root.getData();
@@ -93,18 +93,53 @@ public class NumberOfNodes {
 			return false;
 	}
 
-	public int total(BinaryTreeNode root, int sum) {
+	public static int total(BinaryTreeNode root, int sum) {
+
+		if (root == null)
+			return 0;
+		int total = root.getData();
 		try {
 			Stack_DynArray<BinaryTreeNode> stk = new Stack_DynArray<BinaryTreeNode>();
-			int total=0;
-			stk.push(root);
-			BinaryTreeNode temp;
-			while(!stk.isEmpty()){
-				temp=stk.pop();
-				total+=temp.getData();
+			boolean flag = false;
+			BinaryTreeNode curr = root, prev = null;
+			while (!flag) {
+
+				if (sum == total)
+					return total;
+				if (curr != null && curr != prev) {
+					stk.push(curr);
+					total += curr.getData();
+					curr = curr.getLeft();
+				} else {
+					if (stk.isEmpty())
+						flag = true;
+					else {
+						BinaryTreeNode temp = stk.top();
+						if (curr == temp.getRight()) {
+							temp = stk.pop();
+							total -= temp.getData();
+							prev = temp;
+							curr = stk.top();
+						}
+						curr = curr.getRight();
+					}
+				}
 			}
+
 		} catch (Exception e) {
 			System.out.println(e);
 		}
+		return total;
+	}
+
+	public static void main(String[] args) {
+		BinaryTreeNode root=new BinaryTreeNode(1);
+		root.left=new BinaryTreeNode(2);
+		root.right=new BinaryTreeNode(3);
+		root.left.left=new BinaryTreeNode(4);
+		root.left.right=new BinaryTreeNode(5);
+		root.right.left=new BinaryTreeNode(6);
+		root.right.right=new BinaryTreeNode(7);
+		System.out.println(sumExists(root,3));
 	}
 }
