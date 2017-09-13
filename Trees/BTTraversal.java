@@ -155,30 +155,32 @@ public class BTTraversal {
 				} else if (temp == stk.top().getLeft()) {
 					if (temp != null)
 						System.out.println(temp.getData());
-					stk.push(stk.top().getRight());
-					temp = stk.top();
+					if(stk.top().getRight()!=null) {stk.push(stk.top().getRight());
+					temp = stk.top();} else temp=stk.pop();
 				} else if (temp != null) {
 					while (temp != null) {
-						stk.push(temp.getLeft());
 						temp = temp.getLeft();
+						if (temp != null)
+							stk.push(temp);
 					}
 				}
-			}
+			}System.out.println(temp.getData());
 		} catch (Exception e) {
 			System.out.println(e);
 		}
 	}
-public static void main(String[] args) {
-	BinaryTreeNode root=new BinaryTreeNode(1);
-	root.left = new BinaryTreeNode(2);
-	root.right = new BinaryTreeNode(3);
-	root.left.left = new BinaryTreeNode(4);
-	root.left.right = new BinaryTreeNode(5);
-	root.left.left.left = new BinaryTreeNode(6);
-	root.left.right.left = new BinaryTreeNode(7);
-	root.left.right.left.left = new BinaryTreeNode(10);
-	root.left.right.left.right = new BinaryTreeNode(8);
-	root.left.right.left.right.right = new BinaryTreeNode(9);
-	PostOrder(root);
-}
+
+	public static void main(String[] args) {
+		BinaryTreeNode root = new BinaryTreeNode(1);
+		root.left = new BinaryTreeNode(2);
+		root.right = new BinaryTreeNode(3);
+		root.left.left = new BinaryTreeNode(4);
+		root.left.right = new BinaryTreeNode(5);
+		root.left.left.left = new BinaryTreeNode(6);
+		root.left.right.left = new BinaryTreeNode(7);
+		root.left.right.left.left = new BinaryTreeNode(10);
+		root.left.right.left.right = new BinaryTreeNode(8);
+		root.left.right.left.right.right = new BinaryTreeNode(9);
+		ite_PostOrder(root);
+	}
 }
