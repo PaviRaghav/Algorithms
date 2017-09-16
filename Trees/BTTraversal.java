@@ -81,7 +81,6 @@ public class BTTraversal {
 			Stack_DynArray<BinaryTreeNode> stk = new Stack_DynArray<BinaryTreeNode>();
 			boolean flag = false;
 			BinaryTreeNode curr = root, prev = null;
-
 			while (!flag) {
 				if (curr != null && curr != prev) {
 					stk.push(curr);
@@ -97,7 +96,8 @@ public class BTTraversal {
 							prev = temp;
 							curr = stk.top();
 						}
-						curr = curr.getRight();
+						if (curr.getRight() != null)
+							curr = curr.getRight();
 					}
 				}
 			}
@@ -145,26 +145,23 @@ public class BTTraversal {
 	public static void ite_Post(BinaryTreeNode root) {
 		Stack_DynArray<BinaryTreeNode> stk = new Stack_DynArray<BinaryTreeNode>();
 		try {
+			BinaryTreeNode curr, prev = null, temp;
 			stk.push(root);
-			BinaryTreeNode temp = root;
+			curr = stk.top();
 			while (!stk.isEmpty()) {
-				if (temp == stk.top().getRight()) {
-					if (temp != null)
-						System.out.println(temp.getData());
-					temp = stk.pop();
-				} else if (temp == stk.top().getLeft()) {
-					if (temp != null)
-						System.out.println(temp.getData());
-					if(stk.top().getRight()!=null) {stk.push(stk.top().getRight());
-					temp = stk.top();} else temp=stk.pop();
-				} else if (temp != null) {
-					while (temp != null) {
-						temp = temp.getLeft();
-						if (temp != null)
-							stk.push(temp);
-					}
+				if (prev == null || prev.getLeft() == curr || prev.getRight() == curr) {
+					if (curr.getLeft() != null)
+						stk.push(curr.getLeft());
+					curr = curr.getLeft();
+					prev = curr;
+				} else if (curr.getRight() == prev) {
+					prev=curr;
+					curr = stk.pop();
+					System.out.println(curr.getData());
+				} else if(curr==null) {
+					stk.push(prev.getRight());
 				}
-			}System.out.println(temp.getData());
+			}
 		} catch (Exception e) {
 			System.out.println(e);
 		}
