@@ -145,7 +145,7 @@ public class BTTraversal {
 	public static void ite_Post(BinaryTreeNode root) {
 		Stack_DynArray<BinaryTreeNode> stk = new Stack_DynArray<BinaryTreeNode>();
 		try {
-			BinaryTreeNode curr, prev = null, temp;
+			BinaryTreeNode curr, prev = null;
 			stk.push(root);
 			curr = stk.top();
 			while (!stk.isEmpty()) {
@@ -158,6 +158,7 @@ public class BTTraversal {
 					prev=curr;
 					curr = stk.pop();
 					System.out.println(curr.getData());
+					curr=stk.top();
 				} else if(curr==null) {
 					stk.push(prev.getRight());
 				}
@@ -168,7 +169,7 @@ public class BTTraversal {
 	}
 
 	public static void main(String[] args) {
-		BinaryTreeNode root = new BinaryTreeNode(1);
+		/* BinaryTreeNode root = new BinaryTreeNode(1);
 		root.left = new BinaryTreeNode(2);
 		root.right = new BinaryTreeNode(3);
 		root.left.left = new BinaryTreeNode(4);
@@ -178,6 +179,9 @@ public class BTTraversal {
 		root.left.right.left.left = new BinaryTreeNode(10);
 		root.left.right.left.right = new BinaryTreeNode(8);
 		root.left.right.left.right.right = new BinaryTreeNode(9);
-		ite_PostOrder(root);
+		ite_PostOrder(root); */
+		int i=0;
+		for(;i<8;i+=4){}
+		System.out.println(i);
 	}
 }
