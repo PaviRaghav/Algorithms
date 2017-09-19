@@ -142,6 +142,7 @@ public class BTTraversal {
 		}
 	}
 
+	@SuppressWarnings("unused")
 	public static void ite_Post(BinaryTreeNode root) {
 		Stack_DynArray<BinaryTreeNode> stk = new Stack_DynArray<BinaryTreeNode>();
 		try {
@@ -149,18 +150,23 @@ public class BTTraversal {
 			stk.push(root);
 			curr = stk.top();
 			while (!stk.isEmpty()) {
-				if (prev == null || prev.getLeft() == curr || prev.getRight() == curr) {
+				 if (curr == null) {
+						if (prev.getRight() != null) {
+							stk.push(prev.getRight());
+							curr=prev.getRight();
+						}
+						
+					}
+				 else if (prev == null || prev.getLeft() == curr || prev.getRight() == curr) {
 					if (curr.getLeft() != null)
 						stk.push(curr.getLeft());
 					curr = curr.getLeft();
 					prev = curr;
 				} else if (curr.getRight() == prev) {
-					prev=curr;
+					prev = curr;
 					curr = stk.pop();
 					System.out.println(curr.getData());
-					curr=stk.top();
-				} else if(curr==null) {
-					stk.push(prev.getRight());
+					curr = stk.top();
 				}
 			}
 		} catch (Exception e) {
@@ -169,19 +175,19 @@ public class BTTraversal {
 	}
 
 	public static void main(String[] args) {
-		/* BinaryTreeNode root = new BinaryTreeNode(1);
-		root.left = new BinaryTreeNode(2);
-		root.right = new BinaryTreeNode(3);
-		root.left.left = new BinaryTreeNode(4);
-		root.left.right = new BinaryTreeNode(5);
-		root.left.left.left = new BinaryTreeNode(6);
-		root.left.right.left = new BinaryTreeNode(7);
-		root.left.right.left.left = new BinaryTreeNode(10);
-		root.left.right.left.right = new BinaryTreeNode(8);
-		root.left.right.left.right.right = new BinaryTreeNode(9);
-		ite_PostOrder(root); */
-		int i=0;
-		for(;i<8;i+=4){}
+		/*
+		 * BinaryTreeNode root = new BinaryTreeNode(1); root.left = new
+		 * BinaryTreeNode(2); root.right = new BinaryTreeNode(3); root.left.left
+		 * = new BinaryTreeNode(4); root.left.right = new BinaryTreeNode(5);
+		 * root.left.left.left = new BinaryTreeNode(6); root.left.right.left =
+		 * new BinaryTreeNode(7); root.left.right.left.left = new
+		 * BinaryTreeNode(10); root.left.right.left.right = new
+		 * BinaryTreeNode(8); root.left.right.left.right.right = new
+		 * BinaryTreeNode(9); ite_PostOrder(root);
+		 */
+		int i = 0;
+		for (; i < 8; i += 4) {
+		}
 		System.out.println(i);
 	}
 }
