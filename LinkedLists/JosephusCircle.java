@@ -1,7 +1,11 @@
 package Algorithms;
 
 import Implementation.*;
-
+/**
+ * in a circular linked list, every m-th node is removed. The final node left out is returned.
+ * @author pavithraraghavan
+ *
+ */
 public class JosephusCircle {
 	public SLL_LinkNode josephusCircle(SLL_LinkNode head, int M) {
 		SLL_LinkNode ptr1 = head;

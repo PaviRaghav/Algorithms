@@ -1,7 +1,11 @@
 package Algorithms;
 
 import Implementation.*;
-
+/**
+ * return the last node whose node number is divisible by k 
+ * @author pavithraraghavan
+ *
+ */
 public class ModularNodes {
 	public SLL_LinkNode modularNodes(SLL_LinkNode head, int k) {
 		SLL_LinkNode modularNode = null;
@@ -16,4 +20,5 @@ public class ModularNodes {
 
 		return modularNode;
 	}
+	
 }
