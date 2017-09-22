@@ -150,17 +150,16 @@ public class BTTraversal {
 			stk.push(root);
 			curr = stk.top();
 			while (!stk.isEmpty()) {
-				//let's write the conditions next
-				if (/* (1) curr!=null */curr == null) {
+				if ((curr != null) && (prev == null || prev.getLeft() == curr || prev.getRight() == curr)) {
 					if (curr.getLeft() != null)
 						stk.push(curr.getLeft());
 					prev = curr;
 					curr = curr.getLeft();
-				} else if (/* (2) curr!=null */prev == null || prev.getLeft() == curr || prev.getRight() == curr) {
-					stk.push(curr.getRight());
-					prev = curr;
+				} else if ((curr == null && stk.top().getRight() != null) || curr.getLeft() == prev) {
+					stk.push(stk.top().getRight());
+					prev = stk.top();
 					curr = prev.getRight();
-				} else if (/* (3) */curr.getRight() == prev) {
+				} else {
 					prev = stk.pop();
 					System.out.println(prev.getData() + " ");
 					curr = stk.top();
