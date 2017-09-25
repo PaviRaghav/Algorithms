@@ -137,34 +137,4 @@ public class BTTraversal {
 			System.out.println(e);
 		}
 	}
-
-	@SuppressWarnings("unused")
-	public static void ite_Post(BinaryTreeNode root) {
-		Stack_DynArray<BinaryTreeNode> stk = new Stack_DynArray<BinaryTreeNode>();
-		try {
-			BinaryTreeNode curr, prev = null;
-			stk.push(root);
-			curr = stk.top();
-			while (!stk.isEmpty()) {
-				curr = stk.top();
-				if (curr.getLeft() != null && (prev == null || prev.getLeft() == curr || prev.getRight() == curr)) {
-
-					stk.push(curr.getLeft());
-					prev = curr;
-					// curr = curr.getLeft();
-				} else if ((curr.getLeft() == null || curr.getLeft() == prev)
-						&& (curr.getRight() != prev && curr.getRight() != null)) {
-					stk.push(curr.getRight());
-					prev = curr;
-					// curr = prev.getRight();
-				} else {
-					prev = stk.pop();
-					System.out.println(prev.getData() + " ");
-					// curr = stk.top();
-				}
-			}
-		} catch (Exception e) {
-			System.out.println(e);
-		}
-	}
 }
