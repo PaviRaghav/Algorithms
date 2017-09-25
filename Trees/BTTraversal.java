@@ -79,27 +79,23 @@ public class BTTraversal {
 	public static void ite_PostOrder(BinaryTreeNode root) {
 		try {
 			Stack_DynArray<BinaryTreeNode> stk = new Stack_DynArray<BinaryTreeNode>();
-			boolean flag = false;
-			BinaryTreeNode curr = root, prev = null;
-			while (!flag) {
-				if (curr != null && curr != prev) {
-					stk.push(curr);
-					curr = curr.getLeft();
+			stk.push(root);
+			BinaryTreeNode curr, prev = null;
+			while (!stk.isEmpty()) {
+				curr = stk.top();
+				if (prev == null || prev.getLeft() == curr || prev.getRight() == curr) {
+					if (curr.getLeft() != null)
+						stk.push(curr.getLeft());
+					else if (curr.getRight() != null)
+						stk.push(curr.getRight());
+				} else if (curr.getLeft() == prev) {
+					if (curr.getRight() != null)
+						stk.push(curr.getRight());
 				} else {
-					if (stk.isEmpty())
-						flag = true;
-					else {
-						BinaryTreeNode temp = stk.top();
-						if (curr == temp.getRight()) {
-							temp = stk.pop();
-							System.out.println(temp.getData());
-							prev = temp;
-							curr = stk.top();
-						}
-						if (curr.getRight() != null)
-							curr = curr.getRight();
-					}
+					System.out.println(curr.data);
+					stk.pop();
 				}
+				prev = curr;
 			}
 		} catch (Exception e) {
 			System.out.println(e);
@@ -150,40 +146,25 @@ public class BTTraversal {
 			stk.push(root);
 			curr = stk.top();
 			while (!stk.isEmpty()) {
-				if ((curr != null) && (prev == null || prev.getLeft() == curr || prev.getRight() == curr)) {
-					if (curr.getLeft() != null)
-						stk.push(curr.getLeft());
+				curr = stk.top();
+				if (curr.getLeft() != null && (prev == null || prev.getLeft() == curr || prev.getRight() == curr)) {
+
+					stk.push(curr.getLeft());
 					prev = curr;
-					curr = curr.getLeft();
-				} else if ((curr == null && stk.top().getRight() != null) || curr.getLeft() == prev) {
-					stk.push(stk.top().getRight());
-					prev = stk.top();
-					curr = prev.getRight();
+					// curr = curr.getLeft();
+				} else if ((curr.getLeft() == null || curr.getLeft() == prev)
+						&& (curr.getRight() != prev && curr.getRight() != null)) {
+					stk.push(curr.getRight());
+					prev = curr;
+					// curr = prev.getRight();
 				} else {
 					prev = stk.pop();
 					System.out.println(prev.getData() + " ");
-					curr = stk.top();
+					// curr = stk.top();
 				}
 			}
 		} catch (Exception e) {
 			System.out.println(e);
 		}
-	}
-
-	public static void main(String[] args) {
-		/*
-		 * BinaryTreeNode root = new BinaryTreeNode(1); root.left = new
-		 * BinaryTreeNode(2); root.right = new BinaryTreeNode(3); root.left.left
-		 * = new BinaryTreeNode(4); root.left.right = new BinaryTreeNode(5);
-		 * root.left.left.left = new BinaryTreeNode(6); root.left.right.left =
-		 * new BinaryTreeNode(7); root.left.right.left.left = new
-		 * BinaryTreeNode(10); root.left.right.left.right = new
-		 * BinaryTreeNode(8); root.left.right.left.right.right = new
-		 * BinaryTreeNode(9); ite_PostOrder(root);
-		 */
-		int i = 0;
-		for (; i < 8; i += 4) {
-		}
-		System.out.println(i);
 	}
 }
