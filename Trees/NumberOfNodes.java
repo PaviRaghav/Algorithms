@@ -94,7 +94,7 @@ public class NumberOfNodes {
 	}
 
 	public static int total(BinaryTreeNode root, int sum) {
-		//find if the given sum exists in the tree
+		// find if the given sum exists in the tree
 		if (root == null)
 			return 0;
 		int total = root.getData();
@@ -130,16 +130,5 @@ public class NumberOfNodes {
 			System.out.println(e);
 		}
 		return total;
-	}
-
-	public static void main(String[] args) {
-		BinaryTreeNode root = new BinaryTreeNode(1);
-		root.left = new BinaryTreeNode(2);
-		root.right = new BinaryTreeNode(3);
-		root.left.left = new BinaryTreeNode(4);
-		root.left.right = new BinaryTreeNode(5);
-		root.right.left = new BinaryTreeNode(6);
-		root.right.right = new BinaryTreeNode(7);
-		System.out.println(sumExists(root, 3));
 	}
 }
