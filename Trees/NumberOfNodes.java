@@ -42,6 +42,7 @@ public class NumberOfNodes {
 	// private static int diameter = 0;
 
 	public static int diameterOfTree(BinaryTreeNode root) {
+		//longest distance between two leaves in a tree
 		if (root == null)
 			return 0;
 		int left, right, diameter = 0;
@@ -54,6 +55,7 @@ public class NumberOfNodes {
 	}
 
 	public static int widthOfTree(BinaryTreeNode root) {
+		//maximum number of nodes on a level of the tree
 		if (root == null)
 			return 0;
 		Q_DynArray<BinaryTreeNode> q = new Q_DynArray<BinaryTreeNode>();
