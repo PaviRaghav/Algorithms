@@ -39,7 +39,7 @@ public class NumberOfNodes {
 		return count;
 	}
 
-	// private static int diameter = 0;
+	private static int diameter = 0;
 
 	public static int diameterOfTree(BinaryTreeNode root) {
 		//longest distance between two leaves in a tree
@@ -50,7 +50,7 @@ public class NumberOfNodes {
 		right = diameterOfTree(root.getRight());
 		if (diameter < left + right + 1)
 			diameter = left + right + 1;
-		// System.out.println(diameter);
+		System.out.println(diameter);
 		return Math.max(left, right) + 1;
 	}
 
