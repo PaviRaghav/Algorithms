@@ -30,6 +30,14 @@ public class TreeFromTraversals {
 			else
 				root.right = null;
 			return root;
-		} // ababbbbcbcbqqqqqq
+		}
+	}
+
+	public BinaryTreeNode fromInorderPostorder(int[] inorder, int[] postorder) {
+		// construct a tree from inorder and preorder traversals
+		BinaryTreeNode root = new BinaryTreeNode(1);
+		
+		return root;
+
 	}
 }
