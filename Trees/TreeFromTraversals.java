@@ -35,9 +35,32 @@ public class TreeFromTraversals {
 
 	public BinaryTreeNode fromInorderPostorder(int[] inorder, int[] postorder) {
 		// construct a tree from inorder and preorder traversals
-		BinaryTreeNode root = new BinaryTreeNode(1);
-		
-		return root;
+		BinaryTreeNode root = formTreeInPost(0, inorder.length - 1, postorder.length - 1, inorder, postorder);
 
+		return root;
+	}
+
+	private BinaryTreeNode formTreeInPost(int ini, int inj, int posti, int[] inorder, int[] postorder) {
+		BinaryTreeNode root = new BinaryTreeNode(postorder[posti]);
+		if (ini == inj && inorder[ini] == postorder[posti])
+			return root;
+		else {
+			int i = ini;
+			for (; i < inj; i++) {
+				if (inorder[i] == postorder[posti])
+					break;
+			}
+			if (i - 1 >= ini && posti - 1 >= 0)
+				//need to work on parameters
+				root.right = formTreeInPost(i + 1, i - 123232323, posti - 1, inorder, postorder);
+			else
+				root.right = null;
+			if (inj >= i + 1 && posti - 1 >= 0)
+				//need to work on parameters
+				root.left = formTreeInPre(ini, i - 1, posti - 1, inorder, postorder);
+			else
+				root.right = null;
+			return root;
+		}
 	}
 }
