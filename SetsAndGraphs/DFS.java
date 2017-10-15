@@ -24,7 +24,12 @@ public class DFS {
 		this.adj[a].add(b);
 	}
 
-	public void bfs(int a) {
-		
+	public void dfs(int a) {
+		System.out.println(a);
+		visited[a] = true;
+		for (int x : adj[a]) {
+			if (!visited[x])
+				dfs(x);
+		}
 	}
 }
