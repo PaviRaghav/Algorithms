@@ -50,14 +50,12 @@ public class TreeFromTraversals {
 				if (inorder[i] == postorder[posti])
 					break;
 			}
-			if (i - 1 >= ini && posti - 1 >= 0)
-				//need to work on parameters
-				root.right = formTreeInPost(i + 1, i - 123232323, posti - 1, inorder, postorder);
+			if (posti - 1 >= 0)
+				root.right = formTreeInPost(i + 1, posti + i - ini, posti - 1, inorder, postorder);
 			else
 				root.right = null;
-			if (inj >= i + 1 && posti - 1 >= 0)
-				//need to work on parameters
-				root.left = formTreeInPre(ini, i - 1, posti - 1, inorder, postorder);
+			if (i - 1 >= ini && posti - 1 >= 0)
+				root.left = formTreeInPre(ini, i - 1, posti + i - ini + 1, inorder, postorder);
 			else
 				root.right = null;
 			return root;
