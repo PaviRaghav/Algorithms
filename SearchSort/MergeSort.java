@@ -14,13 +14,12 @@ public class MergeSort {
 		}
 		SLL_LinkNode head2 = ptr1.getNext();
 		ptr1.setNext(null);
-		head=sortList(head);
-		head2=sortList(head2);
-		head = merge(head, head2);
-		
+		head = sortList(head);
+		head2 = sortList(head2);
+
 		// merge
 
-		return head;
+		return merge(head, head2);
 	}
 
 	public SLL_LinkNode merge(SLL_LinkNode head1, SLL_LinkNode head2) {
