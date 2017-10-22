@@ -42,29 +42,4 @@ public class InsertionSort {
 		}
 		return head;
 	}
-
-	public static void main(String[] args) {
-		// 2->1->5->3->0->6->2->null
-		SLL_LinkNode head = new SLL_LinkNode(2);
-		head.setNext(new SLL_LinkNode(1));
-		head.getNext().setNext(new SLL_LinkNode(5));
-		head.getNext().getNext().setNext(new SLL_LinkNode(3));
-		head.getNext().getNext().getNext().setNext(new SLL_LinkNode(0));
-		head.getNext().getNext().getNext().getNext().setNext(new SLL_LinkNode(6));
-		head.getNext().getNext().getNext().getNext().getNext().setNext(new SLL_LinkNode(2));
-		head.getNext().getNext().getNext().getNext().getNext().getNext().setNext(null);
-		SLL_LinkNode temp = head;
-		while (temp != null) {
-			System.out.print(temp.data + " ");
-			temp = temp.getNext();
-		}
-		System.out.println();
-		InsertionSort obj = new InsertionSort();
-		SLL_LinkNode newhead = obj.insertionSort(head);
-		temp = newhead;
-		while (temp != null) {
-			System.out.print(temp.data + " ");
-			temp = temp.getNext();
-		}
-	}
 }
