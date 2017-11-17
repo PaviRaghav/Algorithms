@@ -1,5 +1,7 @@
 package Algorithms;
 
+import java.util.*;
+
 import Implementation.BinaryTreeNode;
 import Implementation.Q_DynArray;
 import Implementation.Stack_DynArray;
@@ -14,7 +16,7 @@ public class BTTraversal {
 		}
 	}
 
-	public static void ite_preorder(BinaryTreeNode root) {
+	public void ite_preorder(BinaryTreeNode root) {
 		if (root == null)
 			return;
 		Stack_DynArray<BinaryTreeNode> stk = new Stack_DynArray<BinaryTreeNode>();
@@ -41,7 +43,7 @@ public class BTTraversal {
 		}
 	}
 
-	public static void ite_inorder(BinaryTreeNode root) {
+	public void ite_inorder(BinaryTreeNode root) {
 		if (root == null)
 			return;
 		Stack_DynArray<BinaryTreeNode> stk = new Stack_DynArray<BinaryTreeNode>();
@@ -68,7 +70,7 @@ public class BTTraversal {
 		}
 	}
 
-	public static void PostOrder(BinaryTreeNode root) {
+	public void PostOrder(BinaryTreeNode root) {
 		if (root != null) {
 			PostOrder(root.getLeft());
 			PostOrder(root.getRight());
@@ -76,7 +78,7 @@ public class BTTraversal {
 		}
 	}
 
-	public static void ite_PostOrder(BinaryTreeNode root) {
+	public void ite_PostOrder(BinaryTreeNode root) {
 		try {
 			Stack_DynArray<BinaryTreeNode> stk = new Stack_DynArray<BinaryTreeNode>();
 			stk.push(root);
@@ -102,7 +104,7 @@ public class BTTraversal {
 		}
 	}
 
-	public static void levelOrderTraversal(BinaryTreeNode root) {
+	public void levelOrderTraversal(BinaryTreeNode root) {
 		Q_DynArray<BinaryTreeNode> q = new Q_DynArray<BinaryTreeNode>();
 		if (root == null)
 			return;
@@ -117,7 +119,7 @@ public class BTTraversal {
 		}
 	}
 
-	public static void reverseLevelOrderTraversal(BinaryTreeNode root) {
+	public void reverseLevelOrderTraversal(BinaryTreeNode root) {
 		Q_DynArray<BinaryTreeNode> q = new Q_DynArray<BinaryTreeNode>();
 		Stack_DynArray<BinaryTreeNode> stk = new Stack_DynArray<BinaryTreeNode>();
 		if (root == null)
@@ -136,5 +138,51 @@ public class BTTraversal {
 		} catch (Exception e) {
 			System.out.println(e);
 		}
+	}
+
+	public void zigzagTreeTraversal(BinaryTreeNode root) {
+		Stack<BinaryTreeNode> stk1 = new Stack<BinaryTreeNode>();
+		Stack<BinaryTreeNode> stk2 = new Stack<BinaryTreeNode>();
+		// root into q, 1st into stk, 2nd into queue
+		stk1.push(root);
+		BinaryTreeNode temp;
+		while (!stk1.isEmpty() || !stk2.isEmpty()) {
+			while (!stk1.isEmpty()) {
+				temp = stk1.pop();
+				System.out.print(temp.data + " ");
+				if (temp.left != null)
+					stk2.push(temp.left);
+				if (temp.right != null)
+					stk2.push(temp.right);
+			}
+			while (!stk2.isEmpty()) {
+				temp = stk2.pop();
+				System.out.print(temp.data + " ");
+				if (temp.right != null)
+					stk1.push(temp.right);
+				if (temp.left != null)
+					stk1.push(temp.left);
+			}
+		}
+	}
+
+	public static void main(String[] args) {
+		BinaryTreeNode root = new BinaryTreeNode(1);
+		root.left = new BinaryTreeNode(2);
+		root.right = new BinaryTreeNode(3);
+		root.left.left = new BinaryTreeNode(4);
+		root.left.right = new BinaryTreeNode(5);
+		root.right.left = new BinaryTreeNode(6);
+		root.right.right = new BinaryTreeNode(7);
+		root.left.left.left = new BinaryTreeNode(8);
+		root.left.left.right = new BinaryTreeNode(9);
+		root.left.right.left = new BinaryTreeNode(10);
+		root.left.right.right = new BinaryTreeNode(11);
+		root.right.left.left = new BinaryTreeNode(12);
+		root.right.left.right = new BinaryTreeNode(13);
+		root.right.right.left = new BinaryTreeNode(14);
+		root.right.right.right = new BinaryTreeNode(15);
+		BTTraversal obj = new BTTraversal();
+		obj.zigzagTreeTraversal(root);
 	}
 }
