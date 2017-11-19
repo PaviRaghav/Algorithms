@@ -3,7 +3,7 @@ package Algorithms;
 import Implementation.*;
 
 public class ReverseQ {
-	public static void reverse(Q_LL q, int data) {
+	public void reverse(Q_LL q, int data) {
 		Stack_LL stk = new Stack_LL();
 		try {
 			while (!q.isEmpty())
@@ -15,7 +15,7 @@ public class ReverseQ {
 		}
 	}
 
-	public static void reversePart(Q_LL q, int k) {
+	public void reversePart(Q_LL q, int k) {
 		try {
 			Stack_LL stk = new Stack_LL();
 			for (int i = 0; i < k; i++)
