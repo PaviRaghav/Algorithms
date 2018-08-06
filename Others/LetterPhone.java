@@ -3,7 +3,7 @@ Given a digit string, return all possible letter combinations that the number co
 
 */
 
-class Solution {
+class LetterPhone {
 	public ArrayList<String> letterCombinations(String A) {
 		ArrayList<ArrayList<Character>> dict = new ArrayList<ArrayList<Character>>();
 		ArrayList<String> result = new ArrayList<String>();
